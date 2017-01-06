@@ -14,6 +14,13 @@ import java.security.NoSuchAlgorithmException;
  * Created by user on 1/6/2017.
  */
 
+
+/*
+* facebook petbaazar url= https://developers.facebook.com/apps/1426136754352468/settings/
+* facebook quickstarts url = https://developers.facebook.com/quickstarts/1426136754352468/?platform=android
+* youtube tutorial url = https://www.youtube.com/watch?v=myWu-q8Q2NA
+* tutorialspoint url = http://www.tutorialspoint.com/android/android_facebook_integration.htm
+* */
 public class MyApplication extends Application {
     @Override
     public void onCreate() {
