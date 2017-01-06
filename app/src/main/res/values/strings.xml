@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Petbaazar</string>
+    <string name="to_start_buying_and_selling">The best marketplace for pets and animals</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="log_in">Continue</string>
+    <string name="title_activity_web">WebActivity</string>
+    <string name="by_continuing_you_agree_to_our_terms_and_conditions">By continuing, you agree to our terms and Conditions</string>
+    <string name="login">Login</string>
+    <string name="facebook_app_id">1426136754352468</string>
+    <string name="skip">Skip</string>
+    <string name="title_activity_login">Login / Register</string>
+</resources>
