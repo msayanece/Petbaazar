@@ -60,7 +60,7 @@
         android:text="Facebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button4"
+        android:id="@+id/facebook"
         android:layout_marginBottom="45dp"
         android:layout_above="@+id/button5"
         android:layout_centerHorizontal="true" />
