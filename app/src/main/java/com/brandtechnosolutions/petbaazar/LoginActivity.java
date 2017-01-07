@@ -18,6 +18,8 @@ import com.facebook.login.widget.LoginButton;
 
 
 /*
+* this is confidential information
+* email id - msayanece@gmail.com (Sayan Mukherjee)
 * Generating google app intregration with cloud
 * DO NOT FORGET--- THIS MUST BE GENERATE AGAIN WHEN APP IS GOING TO BE RELEASED
 * keystore path- C:\Users\user\.android\debug.keystore
