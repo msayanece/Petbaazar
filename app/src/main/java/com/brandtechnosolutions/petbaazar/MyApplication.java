@@ -25,9 +25,13 @@ import java.security.NoSuchAlgorithmException;
 * tutorialspoint url = http://www.tutorialspoint.com/android/android_facebook_integration.htm
 * */
 public class MyApplication extends Application {
+
+    private static String TAG = "sayan";
+
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.d(TAG,"MyApplication onCreate");
         printHashKey();
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);

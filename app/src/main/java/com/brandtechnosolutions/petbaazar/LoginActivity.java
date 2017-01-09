@@ -45,30 +45,42 @@ public class LoginActivity extends AppCompatActivity implements
     private CallbackManager mcallbackManager;
     private GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 007;
-    SignInButton signInButton;
+//    private static final int FB_SIGN_IN = 0;
+    private SignInButton signInButton;
+    private static String TAG = "sayan";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.d(TAG,"onCreate");
+        //initialise facebook sdk
         FacebookSdk.sdkInitialize(getApplicationContext());
         mcallbackManager = CallbackManager.Factory.create();
+
+        //setContentView
         setContentView(R.layout.activity_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //facebook button read permissions
         loginButton = (LoginButton) findViewById(R.id.facebook);
         loginButton.setReadPermissions("email");
 
+        //google button wide size, set onClickListener
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_WIDE);
         findViewById(R.id.sign_in_button).setOnClickListener(this);
+
+        // build google sign in options
         // Configure sign-in to request the user's ID, email address, and basic
-// profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
 
         // Build a GoogleApiClient with access to the Google Sign-In API and the
-// options specified by gso.
+        // options specified by gso(google sign in options).
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
@@ -78,23 +90,28 @@ public class LoginActivity extends AppCompatActivity implements
         loginButton.registerCallback(mcallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d("call", "success");
+                Log.d(TAG, "facebook login successful");
+                Toast.makeText(getApplicationContext(),"Successfully logged in",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),loginResult.getAccessToken().getPermissions()+"",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),loginResult.getAccessToken().describeContents()+"",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), ""+loginResult.getAccessToken().getUserId(),Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onCancel() {
-                Log.d("call", "cancel");
+                Log.d(TAG, "cancel");
             }
 
             @Override
             public void onError(FacebookException exception) {
-                Log.d("call", "error");
+                Log.d(TAG, "error");
             }
         });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG,"onCreateOptionsMenu");
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_log_in, menu);
         return true;
@@ -102,6 +119,7 @@ public class LoginActivity extends AppCompatActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG,"onOptionsItemSelected");
         switch (item.getItemId()) {
             case R.id.action_skip:
                 Intent intent = new Intent(this, WebActivity.class);
@@ -113,6 +131,7 @@ public class LoginActivity extends AppCompatActivity implements
     }
 
     private void updateUI(boolean isSignedIn) {
+        Log.d(TAG,"GoogleUpdateUI");
         if (isSignedIn) {
             signInButton.setVisibility(View.GONE);
 //            btnSignOut.setVisibility(View.VISIBLE);
@@ -127,12 +146,17 @@ public class LoginActivity extends AppCompatActivity implements
     }
 
     private void signIn() {
+        Log.d(TAG,"googleSignIn");
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+//    private void facebookSignIn(){
+//        startActivityForResult(signInIntent, FB_SIGN_IN);
+//    }
     @Override
     public void onClick(View view) {
+        Log.d(TAG,"googleOnClick");
         switch (view.getId()) {
             case R.id.sign_in_button:
                 signIn();
@@ -142,22 +166,28 @@ public class LoginActivity extends AppCompatActivity implements
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+        Log.d(TAG,"GoogleOnConnectionFailed");
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(TAG,"onActivityResult");
+        mcallbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
-        Toast.makeText(this, "onActivityResult",Toast.LENGTH_SHORT).show();
+//        if (requestCode == FB_SIGN_IN){
+//            Log.d(TAG,"facebook in onActivityResult");
+//            mcallbackManager.onActivityResult(requestCode, resultCode, data);
+//        }
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
+            Log.d(TAG,"google in onActivityResult");
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
         }
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
-        Toast.makeText(this, "Sign in Successful",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Sign in Successful GoogleSignInResult",Toast.LENGTH_SHORT).show();
 
         if (result.isSuccess()) {
 
@@ -165,6 +195,9 @@ public class LoginActivity extends AppCompatActivity implements
             GoogleSignInAccount acct = result.getSignInAccount();
             Toast.makeText(this, acct.getDisplayName(),Toast.LENGTH_SHORT).show();
             Toast.makeText(this, acct.getEmail(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, acct.getId(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, ""+acct.getPhotoUrl(),Toast.LENGTH_SHORT).show();
+
             updateUI(true);
         } else {
             // Signed out, show unauthenticated UI.
