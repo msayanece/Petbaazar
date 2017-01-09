@@ -14,15 +14,22 @@
     tools:context="com.brandtechnosolutions.petbaazar.LoginActivity"
     tools:showIn="@layout/activity_login">
 
-    <ImageButton
-        android:text="Login via Gmail"
-        android:layout_width="wrap_content"
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button5"
-        android:src="@drawable/google"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/facebook"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp" />
+
+    <com.facebook.login.widget.LoginButton
+        android:text="Facebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/facebook"
+        android:layout_marginTop="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="@string/login"
@@ -31,9 +38,10 @@
         android:textColor="@android:color/white"
         android:background="@drawable/button_border"
         android:id="@+id/button"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/editText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -42,26 +50,17 @@
         android:hint="Enter Mobile Number"
         android:ems="10"
         android:id="@+id/editText"
-        android:layout_above="@+id/button"
+        android:layout_marginTop="49dp"
+        android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="14dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="OR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:layout_below="@+id/button5"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="49dp" />
-
-    <com.facebook.login.widget.LoginButton
-        android:text="Facebook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/facebook"
-        android:layout_marginBottom="45dp"
-        android:layout_above="@+id/button5"
+        android:layout_marginTop="52dp"
+        android:layout_below="@+id/sign_in_button"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
