@@ -12,10 +12,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
@@ -45,15 +49,35 @@ public class LoginActivity extends AppCompatActivity implements
     private CallbackManager mcallbackManager;
     private GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 007;
-//    private static final int FB_SIGN_IN = 0;
+    //    private static final int FB_SIGN_IN = 0;
     private SignInButton signInButton;
     private static String TAG = "sayan";
+    private FacebookCallback<LoginResult> mcallBack = new FacebookCallback<LoginResult>() {
+        @Override
+        public void onSuccess(LoginResult loginResult) {
+            AccessToken accessToken = loginResult.getAccessToken();
+            Profile profile = Profile.getCurrentProfile();
+            if (profile != null) {
+                dispayProfileInformation(profile);
+            }
+        }
+
+        @Override
+        public void onCancel() {
+
+        }
+
+        @Override
+        public void onError(FacebookException error) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.d(TAG,"onCreate");
+        Log.d(TAG, "onCreate");
         //initialise facebook sdk
         FacebookSdk.sdkInitialize(getApplicationContext());
         mcallbackManager = CallbackManager.Factory.create();
@@ -65,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements
 
         //facebook button read permissions
         loginButton = (LoginButton) findViewById(R.id.facebook);
-        loginButton.setReadPermissions("email");
+        loginButton.setReadPermissions("email", "user_birthday", "public_profile");
 
         //google button wide size, set onClickListener
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
@@ -86,32 +110,31 @@ public class LoginActivity extends AppCompatActivity implements
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
+
+        //track access token and profile
+        AccessTokenTracker atTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+
+            }
+        };
+        ProfileTracker pTracker = new ProfileTracker() {
+            @Override
+            protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
+                if (currentProfile != null)
+                    dispayProfileInformation(currentProfile);
+            }
+        };
+
+
         // Callback registration for facebook
-        loginButton.registerCallback(mcallbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.d(TAG, "facebook login successful");
-                Toast.makeText(getApplicationContext(),"Successfully logged in",Toast.LENGTH_LONG).show();
-                Toast.makeText(getApplicationContext(),loginResult.getAccessToken().getPermissions()+"",Toast.LENGTH_LONG).show();
-                Toast.makeText(getApplicationContext(),loginResult.getAccessToken().describeContents()+"",Toast.LENGTH_LONG).show();
-                Toast.makeText(getApplicationContext(), ""+loginResult.getAccessToken().getUserId(),Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onCancel() {
-                Log.d(TAG, "cancel");
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                Log.d(TAG, "error");
-            }
-        });
+        loginButton.registerCallback(mcallbackManager, mcallBack);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        Log.d(TAG,"onCreateOptionsMenu");
+        Log.d(TAG, "onCreateOptionsMenu");
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_log_in, menu);
         return true;
@@ -119,7 +142,7 @@ public class LoginActivity extends AppCompatActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d(TAG,"onOptionsItemSelected");
+        Log.d(TAG, "onOptionsItemSelected");
         switch (item.getItemId()) {
             case R.id.action_skip:
                 Intent intent = new Intent(this, WebActivity.class);
@@ -131,9 +154,9 @@ public class LoginActivity extends AppCompatActivity implements
     }
 
     private void updateUI(boolean isSignedIn) {
-        Log.d(TAG,"GoogleUpdateUI");
+        Log.d(TAG, "GoogleUpdateUI");
         if (isSignedIn) {
-            signInButton.setVisibility(View.GONE);
+//            signInButton.setVisibility(View.GONE);
 //            btnSignOut.setVisibility(View.VISIBLE);
 //            btnRevokeAccess.setVisibility(View.VISIBLE);
 //            llProfileLayout.setVisibility(View.VISIBLE);
@@ -146,17 +169,17 @@ public class LoginActivity extends AppCompatActivity implements
     }
 
     private void signIn() {
-        Log.d(TAG,"googleSignIn");
+        Log.d(TAG, "googleSignIn");
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-//    private void facebookSignIn(){
+    //    private void facebookSignIn(){
 //        startActivityForResult(signInIntent, FB_SIGN_IN);
 //    }
     @Override
     public void onClick(View view) {
-        Log.d(TAG,"googleOnClick");
+        Log.d(TAG, "googleOnClick");
         switch (view.getId()) {
             case R.id.sign_in_button:
                 signIn();
@@ -166,12 +189,12 @@ public class LoginActivity extends AppCompatActivity implements
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.d(TAG,"GoogleOnConnectionFailed");
+        Log.d(TAG, "GoogleOnConnectionFailed");
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d(TAG,"onActivityResult");
+        Log.d(TAG, "onActivityResult");
         mcallbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
 //        if (requestCode == FB_SIGN_IN){
@@ -180,29 +203,41 @@ public class LoginActivity extends AppCompatActivity implements
 //        }
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            Log.d(TAG,"google in onActivityResult");
+            Log.d(TAG, "google in onActivityResult");
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
         }
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
-        Toast.makeText(this, "Sign in Successful GoogleSignInResult",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Sign in Successful GoogleSignInResult", Toast.LENGTH_SHORT).show();
 
         if (result.isSuccess()) {
 
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            Toast.makeText(this, acct.getDisplayName(),Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, acct.getEmail(),Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, acct.getId(),Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, ""+acct.getPhotoUrl(),Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(this, "full name: " + acct.getDisplayName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "email: " + acct.getEmail(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "last name: " + acct.getFamilyName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "first name: " + acct.getGivenName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "id: " + acct.getId(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "dp uri: " + acct.getPhotoUrl(), Toast.LENGTH_SHORT).show();
             updateUI(true);
         } else {
             // Signed out, show unauthenticated UI.
             updateUI(false);
         }
     }
+
+    void dispayProfileInformation(Profile profile) {
+        Toast.makeText(getApplicationContext(), "facebook info: ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "first name: " + profile.getFirstName(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "last name: " + profile.getLastName(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "full name: " + profile.getName(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "link uri: " + profile.getLinkUri() + "", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "id: " + profile.getId(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "DP uri: " + profile.getProfilePictureUri(480, 720), Toast.LENGTH_LONG).show();
+    }
+
 
 }

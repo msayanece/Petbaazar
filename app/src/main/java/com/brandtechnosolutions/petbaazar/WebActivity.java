@@ -37,7 +37,6 @@ public class WebActivity extends AppCompatActivity {
         view.setWebChromeClient(new WebChromeClient(){             //Anonymous inner class
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
-                setTitle("Loading...");
                 if(newProgress < 100 && progress.getVisibility() == ProgressBar.GONE){
                     progress.setVisibility(ProgressBar.VISIBLE);
                 }
