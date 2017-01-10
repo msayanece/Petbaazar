@@ -46,15 +46,14 @@ public class LoginActivity extends AppCompatActivity implements
         View.OnClickListener,
         GoogleApiClient.OnConnectionFailedListener {
 
+    private static final int RC_SIGN_IN = 007;
+    private static String TAG = "sayan";
     AccessTokenTracker atTracker;
     private ProfileTracker pTracker;
     private LoginButton loginButton;
     private CallbackManager mcallbackManager;
     private GoogleApiClient mGoogleApiClient;
-    private static final int RC_SIGN_IN = 007;
-                                                                                    //    private static final int FB_SIGN_IN = 0;
     private SignInButton signInButton;
-    private static String TAG = "sayan";
     private FacebookCallback<LoginResult> mcallBack = new FacebookCallback<LoginResult>() {
         @Override
         public void onSuccess(LoginResult loginResult) {
@@ -64,60 +63,50 @@ public class LoginActivity extends AppCompatActivity implements
                 putFacebookProfileInformation(profile);
             }
         }
-
         @Override
         public void onCancel() {
-
         }
-
         @Override
         public void onError(FacebookException error) {
-
         }
     };
 
+
+    //onCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Log.d(TAG, "onCreate");
                                                                                         //initialise facebook sdk
         FacebookSdk.sdkInitialize(getApplicationContext());
         mcallbackManager = CallbackManager.Factory.create();
-
                                                                                        //setContentView
         setContentView(R.layout.activity_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
                                                                                          //facebook button read permissions
         loginButton = (LoginButton) findViewById(R.id.facebook);
         loginButton.setReadPermissions("email", "user_birthday", "public_profile");
-
                                                                                         //google button wide size, set onClickListener
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_WIDE);
         findViewById(R.id.sign_in_button).setOnClickListener(this);
-
                                                                                         // build google sign in options
                                                                                         // Configure sign-in to request the user's ID, email address, and basic
                                                                                         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-
                                                                                         // Build a GoogleApiClient with access to the Google Sign-In API and the
                                                                                         // options specified by gso(google sign in options).
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-
                                                                                         //track access token and profile
         atTracker = new AccessTokenTracker() {
             @Override
             protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-
             }
         };
         pTracker = new ProfileTracker() {
@@ -130,12 +119,12 @@ public class LoginActivity extends AppCompatActivity implements
 
 //        atTracker.startTracking();
 //        pTracker.startTracking();
-
                                                                                     // Callback registration for facebook
         loginButton.registerCallback(mcallbackManager, mcallBack);
     }
 
 
+    //onCreateOptionsMenu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         Log.d(TAG, "onCreateOptionsMenu");
@@ -144,6 +133,8 @@ public class LoginActivity extends AppCompatActivity implements
         return true;
     }
 
+
+    //onOptionsItemSelected
     @Override                                                                       //for skipping to webview
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.d(TAG, "onOptionsItemSelected");
@@ -163,12 +154,8 @@ public class LoginActivity extends AppCompatActivity implements
 //        }
 //    }
 
-    private void signIn() {
-        Log.d(TAG, "googleSignIn");
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
 
+    //onClick
     @Override
     public void onClick(View view) {
         Log.d(TAG, "googleOnClick");
@@ -179,17 +166,21 @@ public class LoginActivity extends AppCompatActivity implements
         }
     }
 
+
+    //onConnectionFailed
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.d(TAG, "GoogleOnConnectionFailed");
     }
 
+
+    //onActivityResult
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d(TAG, "onActivityResult");
         mcallbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
-                                                                                    // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Log.d(TAG, "google in onActivityResult");
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
@@ -197,6 +188,16 @@ public class LoginActivity extends AppCompatActivity implements
         }
     }
 
+
+    //signIn google
+    private void signIn() {
+        Log.d(TAG, "googleSignIn");
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+
+    //handleSignInResult
     private void handleSignInResult(GoogleSignInResult result) {
         if (result.isSuccess()) {
             Toast.makeText(this, "Sign in Successful!", Toast.LENGTH_SHORT).show();
@@ -210,7 +211,9 @@ public class LoginActivity extends AppCompatActivity implements
 //            updateUI(false);
         }
     }
-                                                                                        //put facebook profile information to Database
+
+
+    //putGoogleAccountInformation to database                                                                                        //put facebook profile information to Database
     private void putGoogleAccountInformation(GoogleSignInAccount acct) {
         String type = "signIn";
         String email = acct.getEmail();
@@ -222,7 +225,8 @@ public class LoginActivity extends AppCompatActivity implements
         worker.execute(type, firstName, lastName, accountId, photoUrl, email);
     }
 
-                                                                                        //put facebook profile information to Database
+
+    //putFacebookProfileInformation on database                                                                                        //put facebook profile information to Database
     private void putFacebookProfileInformation(Profile profile) {
         String type = "signIn";
         String firstName = profile.getFirstName();
