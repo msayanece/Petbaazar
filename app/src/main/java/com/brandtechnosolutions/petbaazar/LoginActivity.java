@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity implements
             AccessToken accessToken = loginResult.getAccessToken();
             Profile profile = Profile.getCurrentProfile();
             if (profile != null) {
-                dispayFbProfileInformation(profile);
+                putFacebookProfileInformation(profile);
             }
         }
 
@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity implements
             @Override
             protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
                 if (currentProfile != null)
-                    dispayFbProfileInformation(currentProfile);
+                    putFacebookProfileInformation(currentProfile);
             }
         };
 
@@ -198,37 +198,37 @@ public class LoginActivity extends AppCompatActivity implements
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
-        Toast.makeText(this, "Sign in Successful GoogleSignInResult", Toast.LENGTH_SHORT).show();
-
         if (result.isSuccess()) {
-                                                                                     // Signed in successfully, show authenticated UI.
+            Toast.makeText(this, "Sign in Successful!", Toast.LENGTH_SHORT).show();
+                                                                                        // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            displayGAccountInformation(acct);
+            putGoogleAccountInformation(acct);
 //            updateUI(true);
         } else {
-            // Signed out, show unauthenticated UI.
+            Toast.makeText(this, "Sign in failed!", Toast.LENGTH_SHORT).show();
+                                                                                        // Signed out, show unauthenticated UI.
 //            updateUI(false);
         }
     }
-                                                                                        //display facebook profile information
-    private void displayGAccountInformation(GoogleSignInAccount acct) {
-        Toast.makeText(this, "full name: " + acct.getDisplayName(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "email: " + acct.getEmail(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "last name: " + acct.getFamilyName(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "first name: " + acct.getGivenName(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "id: " + acct.getId(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "dp uri: " + acct.getPhotoUrl(), Toast.LENGTH_SHORT).show();
+                                                                                        //put facebook profile information to Database
+    private void putGoogleAccountInformation(GoogleSignInAccount acct) {
+        String email = acct.getEmail();
+        String lastName = acct.getFamilyName();
+        String firstName = acct.getGivenName();
+        String accountId = acct.getId();
+        String photoUrl = acct.getPhotoUrl().toString();
+        DatabaseBackgroundWorker worker = new DatabaseBackgroundWorker(getApplicationContext());
+        worker.execute(firstName, lastName, accountId, photoUrl, email);
     }
 
-                                                                                        //display facebook profile information
-    private void dispayFbProfileInformation(Profile profile) {
-        Toast.makeText(getApplicationContext(), "facebook info: ", Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(), "first name: " + profile.getFirstName(), Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), "last name: " + profile.getLastName(), Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), "full name: " + profile.getName(), Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), "link uri: " + profile.getLinkUri() + "", Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), "id: " + profile.getId(), Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), "DP uri: " + profile.getProfilePictureUri(480, 720), Toast.LENGTH_LONG).show();
+                                                                                        //put facebook profile information to Database
+    private void putFacebookProfileInformation(Profile profile) {
+        String firstName = profile.getFirstName();
+        String lastName = profile.getLastName();
+        String accountId = profile.getId();
+        String photoUrl = profile.getProfilePictureUri(480, 720).toString();
+        DatabaseBackgroundWorker worker = new DatabaseBackgroundWorker(getApplicationContext());
+        worker.execute(firstName, lastName, accountId, photoUrl);
     }
 
 
