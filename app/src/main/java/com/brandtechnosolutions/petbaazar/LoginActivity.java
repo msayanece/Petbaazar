@@ -212,23 +212,25 @@ public class LoginActivity extends AppCompatActivity implements
     }
                                                                                         //put facebook profile information to Database
     private void putGoogleAccountInformation(GoogleSignInAccount acct) {
+        String type = "signIn";
         String email = acct.getEmail();
         String lastName = acct.getFamilyName();
         String firstName = acct.getGivenName();
         String accountId = acct.getId();
         String photoUrl = acct.getPhotoUrl().toString();
         DatabaseBackgroundWorker worker = new DatabaseBackgroundWorker(getApplicationContext());
-        worker.execute(firstName, lastName, accountId, photoUrl, email);
+        worker.execute(type, firstName, lastName, accountId, photoUrl, email);
     }
 
                                                                                         //put facebook profile information to Database
     private void putFacebookProfileInformation(Profile profile) {
+        String type = "signIn";
         String firstName = profile.getFirstName();
         String lastName = profile.getLastName();
         String accountId = profile.getId();
         String photoUrl = profile.getProfilePictureUri(480, 720).toString();
         DatabaseBackgroundWorker worker = new DatabaseBackgroundWorker(getApplicationContext());
-        worker.execute(firstName, lastName, accountId, photoUrl);
+        worker.execute(type, firstName, lastName, accountId, photoUrl);
     }
 
 
