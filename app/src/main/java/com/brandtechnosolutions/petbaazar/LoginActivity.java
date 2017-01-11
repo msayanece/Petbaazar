@@ -18,6 +18,8 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
@@ -29,6 +31,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /*
@@ -62,6 +67,27 @@ public class LoginActivity extends AppCompatActivity implements
             if (profile != null) {
                 putFacebookProfileInformation(profile);
             }
+            GraphRequest request = GraphRequest.newMeRequest(
+                    loginResult.getAccessToken(),
+                    new GraphRequest.GraphJSONObjectCallback() {
+                        @Override
+                        public void onCompleted(JSONObject object, GraphResponse response) {
+                            Log.v("LoginActivity", response.toString());
+
+                            // Application code
+                            try {
+                                String email = object.getString("email");
+                                String birthday = object.getString("birthday");
+                                Toast.makeText(getApplicationContext(), "email: " + email + " and birthday: " + birthday, Toast.LENGTH_LONG).show();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+            Bundle parameters = new Bundle();
+            parameters.putString("fields", "id,name,email,gender,birthday");
+            request.setParameters(parameters);
+            request.executeAsync();
         }
         @Override
         public void onCancel() {
@@ -77,7 +103,6 @@ public class LoginActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
-                                                                                        //initialise facebook sdk
         FacebookSdk.sdkInitialize(getApplicationContext());
         mcallbackManager = CallbackManager.Factory.create();
                                                                                        //setContentView
@@ -215,28 +240,29 @@ public class LoginActivity extends AppCompatActivity implements
 
     //putGoogleAccountInformation to database                                                                                        //put facebook profile information to Database
     private void putGoogleAccountInformation(GoogleSignInAccount acct) {
-        String type = "signIn";
+        String type = "signUp";
+        String accountType = "google";
         String email = acct.getEmail();
         String lastName = acct.getFamilyName();
         String firstName = acct.getGivenName();
         String accountId = acct.getId();
         String photoUrl = acct.getPhotoUrl().toString();
         DatabaseBackgroundWorker worker = new DatabaseBackgroundWorker(getApplicationContext());
-        worker.execute(type, firstName, lastName, accountId, photoUrl, email);
+        worker.execute(type, accountType, firstName, lastName, email);
     }
 
 
     //putFacebookProfileInformation on database                                                                                        //put facebook profile information to Database
     private void putFacebookProfileInformation(Profile profile) {
-        String type = "signIn";
+        String type = "signUp";
+        String accountType = "facebook";
         String firstName = profile.getFirstName();
         String lastName = profile.getLastName();
         String accountId = profile.getId();
         String photoUrl = profile.getProfilePictureUri(480, 720).toString();
         DatabaseBackgroundWorker worker = new DatabaseBackgroundWorker(getApplicationContext());
-        worker.execute(type, firstName, lastName, accountId, photoUrl);
+        worker.execute(type, accountType, firstName, lastName);
     }
-
 
 //    @Override                                                                         //if ProfileTracker.startTracking() and AccessTokenTracker.startTracking() called
 //    protected void onStop() {

@@ -2,6 +2,8 @@ package com.brandtechnosolutions.petbaazar;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -30,16 +32,13 @@ public class DatabaseBackgroundWorker extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... strings) {
 
         String type = strings[0];
-        String firstName = strings[1];                                          //get all the input data
-        String lastName = strings[2];
-        String accountId = strings[3];
-        String photoUrl = strings[4];
+        String accountType = strings[1];
+        String firstName = strings[2];                                          //get all the input data
+        String lastName = strings[3];
         String email = null;
-//        if (strings[5]!= null){
-//            email = strings[5];
-//        }
-        String login_url = "http://192.168.1.6/login.php";
-        if (type.equals("login")) {
+        String post_data = null;
+        String login_url = "http://petbaazar.in/android/";
+        if (type.equals("signUp")) {
             try {
 
                 URL url = new URL(login_url);
@@ -49,8 +48,19 @@ public class DatabaseBackgroundWorker extends AsyncTask<String, Void, String> {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("user_name", "UTF-8") + "=" + URLEncoder.encode(firstName, "UTF-8") + "&"
-                        + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(lastName, "UTF-8");
+                if (accountType.equalsIgnoreCase("google")) {
+                    email = strings[4];
+                    post_data = URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8") + "&"
+                            + URLEncoder.encode("accountType", "UTF-8") + "=" + URLEncoder.encode(accountType, "UTF-8") + "&"
+                            + URLEncoder.encode("firstName", "UTF-8") + "=" + URLEncoder.encode(firstName, "UTF-8") + "&"
+                            + URLEncoder.encode("lastName", "UTF-8") + "=" + URLEncoder.encode(lastName, "UTF-8") + "&"
+                            + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8");
+                } else {
+                    post_data = URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8") + "&"
+                            + URLEncoder.encode("accountType", "UTF-8") + "=" + URLEncoder.encode(accountType, "UTF-8") + "&"
+                            + URLEncoder.encode("firstName", "UTF-8") + "=" + URLEncoder.encode(firstName, "UTF-8") + "&"
+                            + URLEncoder.encode("lastName", "UTF-8") + "=" + URLEncoder.encode(lastName, "UTF-8");
+                }
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -82,6 +92,8 @@ public class DatabaseBackgroundWorker extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String s) {
+        Toast.makeText(context, s, Toast.LENGTH_LONG).show();
+        Log.d("sayan", s);
         super.onPostExecute(s);
     }
 }
