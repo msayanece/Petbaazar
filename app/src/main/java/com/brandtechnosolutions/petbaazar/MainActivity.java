@@ -2,10 +2,10 @@ package com.brandtechnosolutions.petbaazar;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -30,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    void logIn(View view) {                        //called when log in button pressed
-        new MyTask().execute("");                 //work in background
+    public void logIn(View view) {                         //called when log in button pressed
+        Toast.makeText(this, "log in", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);                 // start web activity
     }
 
     /**
@@ -69,15 +71,4 @@ public class MainActivity extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
     }
-
-    class MyTask extends AsyncTask<String, Integer, String> {
-
-        @Override
-        protected String doInBackground(String... strings) {
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);                 // start web activity
-        return null;
-    }
-}
-
 }

@@ -35,9 +35,9 @@ public class DatabaseBackgroundWorker extends AsyncTask<String, Void, String> {
         String accountId = strings[3];
         String photoUrl = strings[4];
         String email = null;
-        if (strings[5]!= null){
-            email = strings[5];
-        }
+//        if (strings[5]!= null){
+//            email = strings[5];
+//        }
         String login_url = "http://192.168.1.6/login.php";
         if (type.equals("login")) {
             try {
