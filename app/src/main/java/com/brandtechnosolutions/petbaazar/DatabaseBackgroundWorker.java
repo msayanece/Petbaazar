@@ -31,9 +31,9 @@ public class DatabaseBackgroundWorker extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... strings) {
 
-        String type = strings[0];
+        String type = strings[0];                                             //get all the input data
         String accountType = strings[1];
-        String firstName = strings[2];                                          //get all the input data
+        String firstName = strings[2];
         String lastName = strings[3];
         String email = strings[4];
         String post_data = null;
