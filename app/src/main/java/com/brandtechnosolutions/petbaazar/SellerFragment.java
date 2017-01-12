@@ -11,10 +11,10 @@ import android.view.ViewGroup;
  * Created by Sayan on 1/12/2017
  */
 public class SellerFragment extends Fragment {
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_seller, container, false);
     }
 }
