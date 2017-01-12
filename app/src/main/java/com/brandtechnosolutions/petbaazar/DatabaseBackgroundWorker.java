@@ -35,7 +35,7 @@ public class DatabaseBackgroundWorker extends AsyncTask<String, Void, String> {
         String accountType = strings[1];
         String firstName = strings[2];                                          //get all the input data
         String lastName = strings[3];
-        String email = null;
+        String email = strings[4];
         String post_data = null;
         String login_url = "http://petbaazar.in/android/";
         if (type.equals("signUp")) {
@@ -48,19 +48,11 @@ public class DatabaseBackgroundWorker extends AsyncTask<String, Void, String> {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                if (accountType.equalsIgnoreCase("google")) {
-                    email = strings[4];
-                    post_data = URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8") + "&"
-                            + URLEncoder.encode("accountType", "UTF-8") + "=" + URLEncoder.encode(accountType, "UTF-8") + "&"
-                            + URLEncoder.encode("firstName", "UTF-8") + "=" + URLEncoder.encode(firstName, "UTF-8") + "&"
-                            + URLEncoder.encode("lastName", "UTF-8") + "=" + URLEncoder.encode(lastName, "UTF-8") + "&"
-                            + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8");
-                } else {
-                    post_data = URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8") + "&"
-                            + URLEncoder.encode("accountType", "UTF-8") + "=" + URLEncoder.encode(accountType, "UTF-8") + "&"
-                            + URLEncoder.encode("firstName", "UTF-8") + "=" + URLEncoder.encode(firstName, "UTF-8") + "&"
-                            + URLEncoder.encode("lastName", "UTF-8") + "=" + URLEncoder.encode(lastName, "UTF-8");
-                }
+                post_data = URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8") + "&"
+                        + URLEncoder.encode("accountType", "UTF-8") + "=" + URLEncoder.encode(accountType, "UTF-8") + "&"
+                        + URLEncoder.encode("firstName", "UTF-8") + "=" + URLEncoder.encode(firstName, "UTF-8") + "&"
+                        + URLEncoder.encode("lastName", "UTF-8") + "=" + URLEncoder.encode(lastName, "UTF-8") + "&"
+                        + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();

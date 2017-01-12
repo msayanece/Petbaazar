@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity implements
     private CallbackManager mcallbackManager;
     private GoogleApiClient mGoogleApiClient;
     private SignInButton signInButton;
+    private String email;
     private FacebookCallback<LoginResult> mcallBack = new FacebookCallback<LoginResult>() {
         @Override
         public void onSuccess(LoginResult loginResult) {
@@ -76,7 +77,7 @@ public class LoginActivity extends AppCompatActivity implements
 
                             // Application code
                             try {
-                                String email = object.getString("email");
+                                email = object.getString("email");
                                 String birthday = object.getString("birthday");
                                 Toast.makeText(getApplicationContext(), "email: " + email + " and birthday: " + birthday, Toast.LENGTH_LONG).show();
                             } catch (JSONException e) {
@@ -213,7 +214,6 @@ public class LoginActivity extends AppCompatActivity implements
         }
     }
 
-
     //signIn google
     private void signIn() {
         Log.d(TAG, "googleSignIn");
@@ -245,8 +245,6 @@ public class LoginActivity extends AppCompatActivity implements
         String email = acct.getEmail();
         String lastName = acct.getFamilyName();
         String firstName = acct.getGivenName();
-        String accountId = acct.getId();
-        String photoUrl = acct.getPhotoUrl().toString();
         DatabaseBackgroundWorker worker = new DatabaseBackgroundWorker(getApplicationContext());
         worker.execute(type, accountType, firstName, lastName, email);
     }
@@ -258,10 +256,8 @@ public class LoginActivity extends AppCompatActivity implements
         String accountType = "facebook";
         String firstName = profile.getFirstName();
         String lastName = profile.getLastName();
-        String accountId = profile.getId();
-        String photoUrl = profile.getProfilePictureUri(480, 720).toString();
         DatabaseBackgroundWorker worker = new DatabaseBackgroundWorker(getApplicationContext());
-        worker.execute(type, accountType, firstName, lastName);
+        worker.execute(type, accountType, firstName, lastName, email);
     }
 
 //    @Override                                                                         //if ProfileTracker.startTracking() and AccessTokenTracker.startTracking() called
