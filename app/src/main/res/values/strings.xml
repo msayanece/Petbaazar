@@ -12,5 +12,6 @@
     <string name="fb_login_protocol_scheme">fb1426136754352468</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sell_fragment">I want to Sell</string>
+    <string name="buy_fragment">I want to Buy</string>
 </resources>
