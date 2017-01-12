@@ -14,4 +14,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="sell_fragment">I want to Sell</string>
     <string name="buy_fragment">I want to Buy</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

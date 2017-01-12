@@ -3,7 +3,6 @@ package com.brandtechnosolutions.petbaazar;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -72,6 +71,8 @@ public class DatabaseBackgroundWorker extends AsyncTask<String, Void, String> {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (NullPointerException e) {
+                Log.d("sayan", e.getStackTrace().toString());
             }
         }
         return null;
@@ -82,10 +83,9 @@ public class DatabaseBackgroundWorker extends AsyncTask<String, Void, String> {
         super.onPreExecute();
     }
 
-    @Override
-    protected void onPostExecute(String s) {
-        Toast.makeText(context, s, Toast.LENGTH_LONG).show();
-        Log.d("sayan", s);
-        super.onPostExecute(s);
-    }
+//    @Override
+//    protected void onPostExecute(String s) {
+//        Toast.makeText(context, s, Toast.LENGTH_LONG).show();
+//        Log.d("sayan", s);
+//    }
 }

@@ -19,59 +19,60 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/facebook"
-        android:foregroundGravity="center"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp" />
+        android:layout_marginTop="44dp"
+        android:foregroundGravity="center"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp" />
 
     <com.facebook.login.widget.LoginButton
-        android:text="Facebook"
+        android:id="@+id/facebook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/facebook"
-        android:layout_marginTop="48dp"
-        android:paddingTop="13dp"
-        android:paddingBottom="13dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="48dp"
+        android:paddingBottom="13dp"
+        android:paddingTop="13dp"
+        android:text="Facebook" />
 
     <Button
-        android:text="@string/login"
+        android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:background="@drawable/button_border"
-        android:id="@+id/button"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_below="@+id/editText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="11dp" />
+        android:layout_below="@+id/editText"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/button_border"
+        android:onClick="callNextActivity"
+        android:text="@string/login"
+        android:textColor="@android:color/white" />
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:hint="Enter Mobile Number"
-        android:ems="10"
-        android:id="@+id/editText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView"
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"
         android:layout_marginTop="49dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:ems="10"
+        android:hint="Enter Mobile Number"
+        android:inputType="phone" />
 
     <TextView
-        android:text="OR"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_marginTop="52dp"
         android:layout_below="@+id/sign_in_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:text="OR" />
 </RelativeLayout>

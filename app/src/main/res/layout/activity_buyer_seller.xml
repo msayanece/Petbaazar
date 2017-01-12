@@ -12,21 +12,18 @@
     android:weightSum="1"
     tools:context="com.brandtechnosolutions.petbaazar.BuyerSellerActivity">
 
-    <fragment
-        android:id="@+id/fragment_seller"
-        android:name="com.brandtechnosolutions.petbaazar.SellerFragment"
+    <RelativeLayout
+        android:id="@+id/RLBuyer"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        tools:layout="@layout/fragment_seller" />
+        android:layout_height="wrap_content"
+        android:layout_weight=".5"
+        android:onClick="onBuy"></RelativeLayout>
 
-    <fragment
-        android:id="@+id/fragment_buyer"
-        android:name="com.brandtechnosolutions.petbaazar.BuyerFragment"
+    <RelativeLayout
+        android:id="@+id/RLSeller"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        tools:layout="@layout/fragment_buyer" />
+        android:layout_height="wrap_content"
+        android:layout_weight=".5"
+        android:onClick="onSell"></RelativeLayout>
+
 </LinearLayout>
