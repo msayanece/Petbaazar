@@ -89,11 +89,11 @@ public class BuyerSellerActivity extends AppCompatActivity implements OpenCamera
     void attachShowPictureFragment(Bitmap bitImage) {
         ShowPictureFragment showPictureFragment = new ShowPictureFragment();
         showPictureFragment.showPicture(bitImage);
-        android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.remove(getFragmentManager().findFragmentByTag("sellerFragment"));
-        transaction.remove(getFragmentManager().findFragmentByTag("buyerFragment"));
-        transaction.add(R.id.activity_buyer_seller, getFragmentManager().findFragmentById(R.id.show_picture_fragment_id), "showPictureFragment");
-        transaction.commit();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.remove(getSupportFragmentManager().findFragmentByTag("sellerFragment"));
+        transaction.remove(getSupportFragmentManager().findFragmentByTag("buyerFragment"));
+        transaction.add(R.id.activity_buyer_seller, showPictureFragment, "showPictureFragment");
+//        transaction.commit();
 //        transaction.add(R.id.RLSeller, sellerFragment, "sellerFragment");
     }
     public void openCamera() throws IOException {
