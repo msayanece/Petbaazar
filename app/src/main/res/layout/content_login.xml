@@ -36,7 +36,7 @@
         android:layout_marginTop="48dp"
         android:paddingBottom="13dp"
         android:paddingTop="13dp"
-        android:text="Facebook" />
+        android:text="@string/facebook" />
 
     <Button
         android:id="@+id/button_login"
@@ -64,7 +64,7 @@
         android:layout_marginRight="3dp"
         android:layout_marginTop="49dp"
         android:ems="10"
-        android:hint="Enter Mobile Number"
+        android:hint="@string/enter_mobile_number"
         android:inputType="phone" />
 
     <TextView
@@ -74,5 +74,5 @@
         android:layout_below="@+id/sign_in_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="52dp"
-        android:text="OR" />
+        android:text="@string/or" />
 </RelativeLayout>

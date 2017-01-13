@@ -19,4 +19,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="take_a_picture_of_your_pet">Take a picture of your pet</string>
+    <string name="open_camera">Open Camera</string>
+    <string name="open_gallery">Open Gallery</string>
+    <string name="sell_icon">sell icon</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="facebook">Facebook</string>
+    <string name="or">OR</string>
+    <string name="petbaazar_icon">petbaazar icon</string>
+    <string name="buy_icon">buy icon</string>
 </resources>

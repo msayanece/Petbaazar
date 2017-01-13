@@ -21,7 +21,7 @@
         android:layout_marginTop="38dp"
         android:background="@drawable/dialog_button"
         android:padding="15dp"
-        android:text="Open Camera"
+        android:text="@string/open_camera"
         android:textColor="@android:color/white" />
 
     <Button
@@ -37,7 +37,7 @@
         android:layout_marginRight="20dp"
         android:background="@drawable/dialog_button"
         android:padding="15dp"
-        android:text="Open Gallery"
+        android:text="@string/open_gallery"
         android:textColor="@android:color/white" />
 
     <TextView
