@@ -1,17 +1,29 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_buyer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/SecondaryColor"
+    android:background="@color/PrimaryColor"
     tools:context="com.brandtechnosolutions.petbaazar.BuyerFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        app:srcCompat="@drawable/buy" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="40dp"
         android:gravity="center_horizontal"
         android:text="@string/buy_fragment"
         android:textColor="@android:color/white"

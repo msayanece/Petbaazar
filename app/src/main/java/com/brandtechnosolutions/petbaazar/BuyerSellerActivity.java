@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 public class BuyerSellerActivity extends AppCompatActivity {
 
@@ -28,7 +27,7 @@ public class BuyerSellerActivity extends AppCompatActivity {
     }
 
     void onBuy(View view) {
-        Toast.makeText(this, "clicked", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "clicked", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, WebActivity.class);
         startActivity(intent);
     }

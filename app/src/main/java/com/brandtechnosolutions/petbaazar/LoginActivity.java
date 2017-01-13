@@ -92,12 +92,16 @@ public class LoginActivity extends AppCompatActivity implements
             request.setParameters(parameters);
             request.executeAsync();
             callBuyerSellerActivity();
+            Toast.makeText(getApplicationContext(), "Log in Successful!", Toast.LENGTH_LONG).show();
         }
         @Override
         public void onCancel() {
+            Toast.makeText(getApplicationContext(), "Log in Cancel!", Toast.LENGTH_LONG).show();
+
         }
         @Override
         public void onError(FacebookException error) {
+            Toast.makeText(getApplicationContext(), "Something went wrong, Log in Failed!", Toast.LENGTH_LONG).show();
         }
     };
 
@@ -115,7 +119,7 @@ public class LoginActivity extends AppCompatActivity implements
         setSupportActionBar(toolbar);
                                                                                          //facebook button read permissions
         loginButton = (LoginButton) findViewById(R.id.facebook);
-        loginButton.setReadPermissions("email", "user_birthday", "public_profile");
+        loginButton.setReadPermissions("email", "public_profile");
                                                                                         //google button wide size, set onClickListener
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_WIDE);
@@ -234,7 +238,7 @@ public class LoginActivity extends AppCompatActivity implements
             callBuyerSellerActivity();
 //            updateUI(true);
         } else {
-            Toast.makeText(this, "Sign in failed!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Something went wrong, sign in failed!", Toast.LENGTH_SHORT).show();
                                                                                         // Signed out, show unauthenticated UI.
 //            updateUI(false);
         }
@@ -287,7 +291,7 @@ public class LoginActivity extends AppCompatActivity implements
     }
 
     void startWebActivity() {
-        Intent intent = new Intent(this, WebActivity.class);
+        Intent intent = new Intent(LoginActivity.this, WebActivity.class);
         startActivity(intent);
     }
 //    @Override                                                                         //if ProfileTracker.startTracking() and AccessTokenTracker.startTracking() called

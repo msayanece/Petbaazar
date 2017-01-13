@@ -13,11 +13,20 @@
     tools:context="com.brandtechnosolutions.petbaazar.BuyerSellerActivity">
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/white"></RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/RLBuyer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".5"
         android:onClick="onBuy"></RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@android:color/white"></RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/RLSeller"
@@ -25,5 +34,10 @@
         android:layout_height="wrap_content"
         android:layout_weight=".5"
         android:onClick="onSell"></RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/white"></RelativeLayout>
 
 </LinearLayout>

@@ -6,7 +6,8 @@
     <string name="title_activity_web">WebActivity</string>
     <string name="by_continuing_you_agree_to_our_terms_and_conditions">By continuing, you agree to our terms and Conditions</string>
     <string name="login">Login</string>
-    <string name="facebook_app_id">1426136754352468</string>
+    <!--<string name="facebook_app_id">1426136754352468</string>-->
+    <string name="facebook_app_id">1160275140758012</string>
     <string name="skip">Skip</string>
     <string name="title_activity_login">Login / Register</string>
     <string name="fb_login_protocol_scheme">fb1426136754352468</string>

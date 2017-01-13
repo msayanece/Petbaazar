@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void logIn(View view) {                         //called when log in button pressed
-        Toast.makeText(this, "log in", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "log in", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);                 // start web activity
     }
