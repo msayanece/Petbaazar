@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.io.IOException;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,10 +46,15 @@ public class SellerOptionFragment extends DialogFragment {
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                OpenCameraFromDialog openCameraFromDialog = (OpenCameraFromDialog) getActivity();
+                try {
+                    openCameraFromDialog.openCamera();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 dialog.dismiss();
             }
         });
-
         gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,5 +63,4 @@ public class SellerOptionFragment extends DialogFragment {
         });
         return dialog;
     }
-
 }
