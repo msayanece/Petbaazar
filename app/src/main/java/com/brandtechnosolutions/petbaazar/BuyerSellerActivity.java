@@ -33,7 +33,10 @@ public class BuyerSellerActivity extends AppCompatActivity {
     }
 
     void onSell(View view) {
+        FragmentManager manager = getSupportFragmentManager();
 
+        SellerOptionFragment dialogFragment = new SellerOptionFragment();
+        dialogFragment.show(manager, "Alert");
     }
 //
 //    //onClick method
