@@ -98,9 +98,11 @@ public class BuyerSellerActivity extends AppCompatActivity implements OpenCamera
     }
     public void openCamera() throws IOException {
         //create File(destination directory...parent, file name with type...child)
-        imageFile = new File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)          //Environment gives access to phone and getESD(_) gives access to external memory and DIRECTORY_DCIM gives DCIM directory path
-                , "test.jpg");
+
+        imageFile = new File(Environment.getExternalStorageDirectory(), "MyCache");
+//        imageFile = new File(
+//                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)          //Environment gives access to phone and getESD(_) gives access to external memory and DIRECTORY_DCIM gives DCIM directory path
+//                , "test.jpg");
         Uri uri = Uri.fromFile(imageFile);                            //to convert from file to Uri
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);  //MediaStore gives access to media(like camera) and ACTION_IMAGE_CAPTURE is the action we want to do by using intent
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
@@ -108,6 +110,5 @@ public class BuyerSellerActivity extends AppCompatActivity implements OpenCamera
         Log.e(TAG, "before startActivityForResult");
         startActivityForResult(intent, 0);                            // 0 is the requestCode for identification
         Log.e(TAG, "after startActivityForResult");
-
     }
 }
