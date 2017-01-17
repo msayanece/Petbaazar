@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,30 +7,92 @@
     android:fitsSystemWindows="true"
     tools:context="com.brandtechnosolutions.petbaazar.OptionActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppBarOverlay"></android.support.design.widget.AppBarLayout>
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="60dp"
         app:srcCompat="@drawable/zlogoa" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/cam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:layout_margin="@dimen/fab_margin"
-        android:visibility="visible"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="bottom|center_horizontal"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
 
     <include
         android:id="@+id/include"
         layout="@layout/content_option" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/buy_menu_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/post_ad_menu_id"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"
+        app:backgroundTint="@android:color/holo_blue_light"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="bottom|right"
+        app:rippleColor="@color/SecondaryColor"
+        app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView7"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_centerHorizontal="true"
+        android:text="Sell Product"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/post_ad_menu_id"
+        android:layout_alignStart="@+id/post_ad_menu_id"
+        android:layout_below="@+id/buy_menu_id"
+        android:layout_marginTop="19dp"
+        android:text="Post Ads"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignEnd="@+id/sell_menu_id"
+        android:layout_alignRight="@+id/sell_menu_id"
+        android:text="Find Pet"
+        android:textColor="@android:color/black" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/post_ad_menu_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="102dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginStart="43dp"
+        android:visibility="visible"
+        app:backgroundTint="@android:color/holo_green_light"
+        app:layout_anchor="@+id/include"
+        app:rippleColor="@color/SecondaryColor"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/sell_menu_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/buy_menu_id"
+        android:layout_marginEnd="46dp"
+        android:layout_marginRight="46dp"
+        android:visibility="visible"
+        app:backgroundTint="@color/PrimaryColor"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="bottom|center_horizontal"
+        app:rippleColor="@color/SecondaryColor"
+        app:srcCompat="@android:drawable/ic_menu_zoom" />
+
+</RelativeLayout>
