@@ -286,7 +286,7 @@ public class LoginActivity extends AppCompatActivity implements
     }
 
     void callBuyerSellerActivity() {
-        Intent intent = new Intent(this, BuyerSellerActivity.class);
+        Intent intent = new Intent(this, OptionActivity.class);
         startActivity(intent);
     }
 

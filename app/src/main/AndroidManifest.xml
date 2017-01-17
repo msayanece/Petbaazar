@@ -60,6 +60,10 @@
         <activity
             android:name=".BuyerSellerActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".OptionActivity"
+            android:label="@string/title_activity_option"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 

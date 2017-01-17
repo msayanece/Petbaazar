@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -23,6 +24,8 @@ public class BuyerSellerActivity extends AppCompatActivity implements OpenCamera
     private File imageFile;
     private SellerFragment sellerFragment;
     private BuyerFragment buyerFragment;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +59,7 @@ public class BuyerSellerActivity extends AppCompatActivity implements OpenCamera
     //after capturing action finishes, this method will be called
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {      //resultCode = OK or Cancel
+        ImageView image = null;
         Log.e(TAG, "onActivityResult start");
         if (requestCode == 0) {
             Log.e(TAG, "requestCode == 0");
@@ -68,16 +72,17 @@ public class BuyerSellerActivity extends AppCompatActivity implements OpenCamera
                         Log.e(TAG, "imagePath taken");
                         Bitmap bitImage = BitmapFactory.decodeFile(imagePath);       //convert path to bitmap code
                         Log.e(TAG, "Bitmap gen");
-                        attachShowPictureFragment(bitImage);
 //                        image.setImageBitmap(bitImage);        //set bitmap code to imageview (just like setImageResources())
                         Toast.makeText(this, "The Image is stored in the directory: " +
                                 imagePath, Toast.LENGTH_LONG).show();
+//                        Log.d(TAG, bitImage.toString());
+                        Log.d(TAG, imagePath);
+                        attachShowPictureFragment(bitImage);
                     } else {
                         Log.e(TAG, "else");
                         Toast.makeText(this, "Oops...There is a Problem When Taking Picture!"
                                 , Toast.LENGTH_LONG).show();
                     }
-
                 case Activity.RESULT_CANCELED:
                     break;
                 default:
@@ -92,14 +97,14 @@ public class BuyerSellerActivity extends AppCompatActivity implements OpenCamera
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.remove(getSupportFragmentManager().findFragmentByTag("sellerFragment"));
         transaction.remove(getSupportFragmentManager().findFragmentByTag("buyerFragment"));
-        transaction.add(R.id.activity_buyer_seller, showPictureFragment, "showPictureFragment");
+        transaction.add(R.id.RLBuyer, showPictureFragment, "showPictureFragment");
 //        transaction.commit();
 //        transaction.add(R.id.RLSeller, sellerFragment, "sellerFragment");
     }
     public void openCamera() throws IOException {
         //create File(destination directory...parent, file name with type...child)
 
-        imageFile = new File(Environment.getExternalStorageDirectory(), "MyCache");
+        imageFile = new File(Environment.getExternalStorageDirectory(), "temp.jpg");
 //        imageFile = new File(
 //                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)          //Environment gives access to phone and getESD(_) gives access to external memory and DIRECTORY_DCIM gives DCIM directory path
 //                , "test.jpg");

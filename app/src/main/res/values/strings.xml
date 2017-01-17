@@ -27,4 +27,5 @@
     <string name="or">OR</string>
     <string name="petbaazar_icon">petbaazar icon</string>
     <string name="buy_icon">buy icon</string>
+    <string name="title_activity_option">OptionActivity</string>
 </resources>
