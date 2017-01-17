@@ -3,6 +3,7 @@ package com.brandtechnosolutions.petbaazar;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -16,17 +17,17 @@ public class OptionActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton sell = (FloatingActionButton) findViewById(R.id.sell_menu_id);
+        FloatingActionButton find = (FloatingActionButton) findViewById(R.id.sell_menu_id);
         FloatingActionButton post = (FloatingActionButton) findViewById(R.id.post_ad_menu_id);
-        FloatingActionButton buy = (FloatingActionButton) findViewById(R.id.buy_menu_id);
-        sell.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton sell = (FloatingActionButton) findViewById(R.id.buy_menu_id);
+        find.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Please mention category!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
-        buy.setOnClickListener(new View.OnClickListener() {
+        sell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Please select options!", Snackbar.LENGTH_LONG)
@@ -36,10 +37,16 @@ public class OptionActivity extends AppCompatActivity {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                onSell(view);
                 Snackbar.make(view, "Want to capture?", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
     }
 
+    void onSell(View view) {
+        FragmentManager manager = getSupportFragmentManager();
+        SellerOptionFragment dialogFragment = new SellerOptionFragment();
+        dialogFragment.show(manager, "Alert");
+    }
 }

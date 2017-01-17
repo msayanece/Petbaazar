@@ -65,7 +65,8 @@
             android:name=".OptionActivity"
             android:label="@string/title_activity_option"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".TakeAdInfoActivity"></activity>
     </application>
 
 </manifest>
