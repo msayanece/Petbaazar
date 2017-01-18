@@ -28,6 +28,8 @@
     <string name="petbaazar_icon">petbaazar icon</string>
     <string name="buy_icon">buy icon</string>
     <string name="title_activity_option">OptionActivity</string>
+    <string name="otp_msg">An OTP will be sent and read if given number is not verified</string>
+    <string name="otp_msg_extra">Verifying your number creates trust and increase your chances of getting the right deal.</string>
 
     <array name="pets">
         <item></item>

@@ -50,13 +50,6 @@ public class SellerOptionFragment extends DialogFragment {
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                OpenCameraFromDialog openCameraFromDialog = (OpenCameraFromDialog) getActivity();
-//                try {
-//                    openCameraFromDialog.openCamera();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//                dialog.dismiss();
                 //create File(destination directory...parent, file name with type...child)
                 File imageFile = new File(
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)           //Environment gives access to phone and getESD(_) gives access to external memory and DIRECTORY_DCIM gives DCIM directory path
@@ -74,7 +67,7 @@ public class SellerOptionFragment extends DialogFragment {
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+                getActivity().startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
             }
         });
         return dialog;

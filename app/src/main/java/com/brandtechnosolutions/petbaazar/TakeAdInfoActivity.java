@@ -1,5 +1,9 @@
 package com.brandtechnosolutions.petbaazar;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -7,23 +11,33 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
 
 public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    TextView petTypeTextView;
+    TextView petTypeTextView, takePictureTextId;
     ArrayAdapter spinnerAdapterPetType;
     Spinner spinnerPetType;
     RelativeLayout relativeAfterBreedText, relativeAfterBreedSpinner;
     EditText otherTypeEditText, otherBreedEditText;
-    View v;
+    ImageButton takeImageButton;
+    ImageView pictureTaken;
+    File imageFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_ad_info);
+        pictureTaken = (ImageView) findViewById(R.id.picture_taken_id);
+        takePictureTextId = (TextView) findViewById(R.id.take_picture_text_id);
+        takeImageButton = (ImageButton) findViewById(R.id.imageView7);
         petTypeTextView = (TextView) findViewById(R.id.textView10);
         otherTypeEditText = (EditText) findViewById(R.id.other_pet_edit_text_id);
         otherBreedEditText = (EditText) findViewById(R.id.other_breed_edit_text_id);
@@ -138,5 +152,31 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
 
     }
 
+    //after caturing action finishes, this method will be called
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {      //resultCode = OK or Cancel
+        if (requestCode == 0) {
+            switch (resultCode) {
+                case Activity.RESULT_OK:
+                    if (imageFile.exists()) {       //boolean
+                        takeImageButton.setVisibility(View.GONE);
+                        takePictureTextId.setVisibility(View.GONE);
+                        String imagePath = imageFile.getAbsolutePath();      //file path access
+                        Bitmap bitImage = BitmapFactory.decodeFile(imagePath);       //convert path to bitmap code
+                        pictureTaken.setImageBitmap(bitImage);        //set bitmap code to imageview (just like setImageResources())
 
+                        Toast.makeText(this, "The Image is stored in the directory: " +
+                                imagePath, Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(this, "Oops...There is a Problem When Taking Picture!"
+                                , Toast.LENGTH_LONG).show();
+                    }
+
+                case Activity.RESULT_CANCELED:
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 }

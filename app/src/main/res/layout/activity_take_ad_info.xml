@@ -171,16 +171,71 @@
         android:textColor="@android:color/black"
         android:textSize="14sp" />
 
+    <ImageView
+        android:id="@+id/picture_taken_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/take_picture_text_id"
+        android:contentDescription="picture taken" />
+
     <TextView
+        android:id="@+id/contact_information_head_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/textView8"
-        android:layout_below="@id/take_picture_text_id"
+        android:layout_below="@id/picture_taken_id"
         android:layout_marginTop="25dp"
         android:text="Your contact information"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold" />
 
+    <EditText
+        android:id="@+id/contact_info_name_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/textView8"
+        android:layout_below="@id/contact_information_head_id"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="25dp"
+        android:hint="Name" />
+
+    <EditText
+        android:id="@+id/contact_info_email_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/textView8"
+        android:layout_below="@id/contact_info_name_id"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="25dp"
+        android:hint="Email" />
+
+    <EditText
+        android:id="@+id/contact_info_mobile_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/textView8"
+        android:layout_below="@id/contact_info_email_id"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="25dp"
+        android:hint="Mobile" />
+
+    <TextView
+        android:id="@+id/otp_verification_msg_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contact_info_mobile_id"
+        android:gravity="center_horizontal"
+        android:text="@string/otp_msg"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/otp_verification_msg_id"
+        android:layout_marginBottom="100dp"
+        android:gravity="center_horizontal"
+        android:text="@string/otp_msg_extra" />
 </RelativeLayout>
 </ScrollView>
