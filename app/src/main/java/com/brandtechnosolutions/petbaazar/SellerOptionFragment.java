@@ -49,16 +49,17 @@ public class SellerOptionFragment extends DialogFragment {
                 dialog.dismiss();
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
-                getActivity().startActivityForResult(intent, 0);
+                getActivity().startActivityForResult(intent, 123);
             }
         });
         gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dialog.dismiss();
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                getActivity().startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+                getActivity().startActivityForResult(Intent.createChooser(intent, "Select Picture"), 321);
             }
         });
         return dialog;

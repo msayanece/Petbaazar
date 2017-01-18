@@ -2,8 +2,11 @@ package com.brandtechnosolutions.petbaazar;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -157,7 +162,7 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {      //resultCode = OK or Cancel
         Toast.makeText(this, "onActivityResult called", Toast.LENGTH_LONG).show();
         switch (requestCode) {
-            case 0:
+            case 123:
                 switch (resultCode) {
                     case Activity.RESULT_OK:
                         takeImageButton.setVisibility(View.GONE);
@@ -172,14 +177,23 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                         break;
                 }
                 break;
-            case 1:
+            case 321:
                 switch (resultCode) {
                     case Activity.RESULT_OK:
                         takeImageButton.setVisibility(View.GONE);
                         takePictureTextId.setVisibility(View.GONE);
-                        Bitmap bitImage = (Bitmap) data.getExtras().get("data");
-                        pictureTaken.setImageBitmap(bitImage);        //set bitmap code to imageview (just like setImageResources())
-                        Toast.makeText(this, "picture captured: " + bitImage, Toast.LENGTH_LONG).show();
+                        if (data == null) {
+                            Toast.makeText(this, "picture not selected!", Toast.LENGTH_LONG).show();
+                        } else {
+                            try {
+                                InputStream inputStream = this.getContentResolver().openInputStream(data.getData());
+//                                Toast.makeText(this, "picture captured: " + inputStream, Toast.LENGTH_LONG).show();
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+//                            Uri selectedImageUri = data.getData();
+//                            String selectedImagePath = getPath(selectedImageUri);
+                        }
                         break;
                     case Activity.RESULT_CANCELED:
                         break;
@@ -192,6 +206,29 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
         }
     }
 
+    /**
+     * helper to retrieve the path of an image URI
+     */
+    public String getPath(Uri uri) {
+        // just some safety built in
+        if (uri == null) {
+            return null;
+        }
+        // try to retrieve the image from the media store first
+        // this will only work for images selected from gallery
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        if (cursor != null) {
+            int column_index = cursor
+                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            String path = cursor.getString(column_index);
+            cursor.close();
+            return path;
+        }
+        // this is our fallback here
+        return uri.getPath();
+    }
 //    public String getImagePath(Context inContext, Bitmap inImage) {
 //        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 //        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);

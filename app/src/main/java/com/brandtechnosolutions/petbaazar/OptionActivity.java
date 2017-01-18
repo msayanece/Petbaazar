@@ -25,6 +25,8 @@ public class OptionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Please mention category!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Intent intent = new Intent(OptionActivity.this, WebActivity.class);
+                startActivity(intent);
             }
         });
         sell.setOnClickListener(new View.OnClickListener() {
