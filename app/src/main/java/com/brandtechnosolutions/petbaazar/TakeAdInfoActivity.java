@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -121,7 +120,6 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                 otherTypeEditText.setVisibility(View.VISIBLE);
                 petTypeTextView.setVisibility(View.GONE);
                 spinnerPetType.setVisibility(View.GONE);
-                Toast.makeText(this, "other selected: " + spinnerString, Toast.LENGTH_LONG).show();
                 otherBreedEditText.setVisibility(View.VISIBLE);
                 break;
             default:
@@ -131,7 +129,6 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                 otherBreedEditText.setVisibility(View.GONE);
                 petTypeTextView.setVisibility(View.GONE);
                 spinnerPetType.setVisibility(View.GONE);
-                Toast.makeText(this, "default selected: " + spinnerString, Toast.LENGTH_LONG).show();
                 break;
         }
     }
@@ -140,4 +137,6 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+
 }
