@@ -231,11 +231,21 @@
         android:textSize="12sp" />
 
     <TextView
+        android:id="@+id/otp_msg_extra_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/otp_verification_msg_id"
-        android:layout_marginBottom="100dp"
         android:gravity="center_horizontal"
-        android:text="@string/otp_msg_extra" />
+        android:text="@string/otp_msg_extra"
+        android:textSize="11sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/otp_msg_extra_id"
+        android:layout_margin="25dp"
+        android:background="@drawable/button_border"
+        android:text="Post Your Ad"
+        android:textColor="@android:color/white" />
 </RelativeLayout>
 </ScrollView>
