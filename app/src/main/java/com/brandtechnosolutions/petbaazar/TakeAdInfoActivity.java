@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +17,9 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
     TextView petTypeTextView;
     ArrayAdapter spinnerAdapterPetType;
     Spinner spinnerPetType;
+    RelativeLayout relativeAfterBreedText, relativeAfterBreedSpinner;
     EditText otherTypeEditText, otherBreedEditText;
+    View v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +27,12 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
         setContentView(R.layout.activity_take_ad_info);
         petTypeTextView = (TextView) findViewById(R.id.textView10);
         otherTypeEditText = (EditText) findViewById(R.id.other_pet_edit_text_id);
-        otherBreedEditText = (EditText) findViewById(R.id.other_pet_edit_text_id);
+        otherBreedEditText = (EditText) findViewById(R.id.other_breed_edit_text_id);
+        relativeAfterBreedSpinner = (RelativeLayout) findViewById(R.id.after_breed_spinner_relative_id);
+        relativeAfterBreedText = (RelativeLayout) findViewById(R.id.relative_spinner_id);
         spinnerPetType = (Spinner) findViewById(R.id.type_spinner);
+//        otherTypeEditText.setVisibility(View.GONE);
+//        otherBreedEditText.setVisibility(View.GONE);
         ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(
                 this, R.array.pets, android.R.layout.simple_spinner_dropdown_item);
         Spinner spinner = (Spinner) findViewById(R.id.pet_spinner);
@@ -49,7 +56,10 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
     void loadSpinner(String spinnerString) {
         switch (spinnerString) {
             case "Cats":
-                findViewById(R.id.relative_spinner_id).setVisibility(View.VISIBLE);
+                otherTypeEditText.setVisibility(View.GONE);
+                otherBreedEditText.setVisibility(View.GONE);
+                relativeAfterBreedText.setVisibility(View.VISIBLE);
+                relativeAfterBreedSpinner.setVisibility(View.GONE);
                 petTypeTextView.setText("Select Cat Breeds");
                 petTypeTextView.setVisibility(View.VISIBLE);
                 spinnerPetType.setVisibility(View.VISIBLE);
@@ -58,7 +68,10 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                 spinnerPetType.setAdapter(spinnerAdapterPetType);
                 break;
             case "Dogs":
-                findViewById(R.id.relative_spinner_id).setVisibility(View.VISIBLE);
+                otherTypeEditText.setVisibility(View.GONE);
+                otherBreedEditText.setVisibility(View.GONE);
+                relativeAfterBreedText.setVisibility(View.VISIBLE);
+                relativeAfterBreedSpinner.setVisibility(View.GONE);
                 petTypeTextView.setText("Select Dog Breeds");
                 petTypeTextView.setVisibility(View.VISIBLE);
                 spinnerPetType.setVisibility(View.VISIBLE);
@@ -67,7 +80,10 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                 spinnerPetType.setAdapter(spinnerAdapterPetType);
                 break;
             case "Fishes":
-                findViewById(R.id.relative_spinner_id).setVisibility(View.VISIBLE);
+                otherTypeEditText.setVisibility(View.GONE);
+                otherBreedEditText.setVisibility(View.GONE);
+                relativeAfterBreedSpinner.setVisibility(View.GONE);
+                relativeAfterBreedText.setVisibility(View.VISIBLE);
                 petTypeTextView.setText("Select Fish Breeds");
                 petTypeTextView.setVisibility(View.VISIBLE);
                 spinnerPetType.setVisibility(View.VISIBLE);
@@ -76,7 +92,10 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                 spinnerPetType.setAdapter(spinnerAdapterPetType);
                 break;
             case "Parrots":
-                findViewById(R.id.relative_spinner_id).setVisibility(View.VISIBLE);
+                otherTypeEditText.setVisibility(View.GONE);
+                otherBreedEditText.setVisibility(View.GONE);
+                relativeAfterBreedText.setVisibility(View.VISIBLE);
+                relativeAfterBreedSpinner.setVisibility(View.GONE);
                 petTypeTextView.setText("Select Parrot Breeds");
                 petTypeTextView.setVisibility(View.VISIBLE);
                 spinnerPetType.setVisibility(View.VISIBLE);
@@ -85,7 +104,10 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                 spinnerPetType.setAdapter(spinnerAdapterPetType);
                 break;
             case "Pigeons":
-                findViewById(R.id.relative_spinner_id).setVisibility(View.VISIBLE);
+                otherTypeEditText.setVisibility(View.GONE);
+                otherBreedEditText.setVisibility(View.GONE);
+                relativeAfterBreedSpinner.setVisibility(View.GONE);
+                relativeAfterBreedText.setVisibility(View.VISIBLE);
                 petTypeTextView.setText("Select Pigeon Breeds");
                 petTypeTextView.setVisibility(View.VISIBLE);
                 spinnerPetType.setVisibility(View.VISIBLE);
@@ -94,9 +116,19 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                 spinnerPetType.setAdapter(spinnerAdapterPetType);
                 break;
             case "Other":
+                relativeAfterBreedSpinner.setVisibility(View.GONE);
+                relativeAfterBreedText.setVisibility(View.GONE);
                 otherTypeEditText.setVisibility(View.VISIBLE);
+                petTypeTextView.setVisibility(View.GONE);
+                spinnerPetType.setVisibility(View.GONE);
+                Toast.makeText(this, "other selected: " + spinnerString, Toast.LENGTH_LONG).show();
                 otherBreedEditText.setVisibility(View.VISIBLE);
+                break;
             default:
+                relativeAfterBreedSpinner.setVisibility(View.GONE);
+                relativeAfterBreedText.setVisibility(View.GONE);
+                otherTypeEditText.setVisibility(View.GONE);
+                otherBreedEditText.setVisibility(View.GONE);
                 petTypeTextView.setVisibility(View.GONE);
                 spinnerPetType.setVisibility(View.GONE);
                 Toast.makeText(this, "default selected: " + spinnerString, Toast.LENGTH_LONG).show();

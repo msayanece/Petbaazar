@@ -31,7 +31,8 @@
         android:layout_marginTop="13dp"
         android:text="Post Free Ad"
         android:textColor="@android:color/white"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:id="@+id/textView8"
@@ -43,7 +44,8 @@
         android:layout_marginTop="25dp"
         android:text="Select Category"
         android:textColor="@android:color/black"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textStyle="normal|bold" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -56,10 +58,10 @@
         android:id="@+id/pet_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignLeft="@+id/textView8"
+        android:layout_alignStart="@+id/textView8"
         android:layout_below="@+id/textView8"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="0dp" />
 
     <EditText
         android:id="@+id/other_pet_edit_text_id"
@@ -67,11 +69,10 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView8"
         android:layout_alignStart="@+id/textView8"
-        android:layout_below="@+id/textView8"
+        android:layout_below="@+id/after_breed_spinner_relative_id"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:hint="Enter Pet Type"
-        android:visibility="gone" />
+        android:layout_marginTop="25dp"
+        android:hint="Enter Pet Type" />
 
     <EditText
         android:id="@+id/other_breed_edit_text_id"
@@ -79,29 +80,29 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView8"
         android:layout_alignStart="@+id/textView8"
-        android:layout_below="@+id/textView8"
+        android:layout_below="@+id/other_pet_edit_text_id"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:hint="Enter Pet Type"
-        android:visibility="gone" />
-
+        android:layout_marginTop="25dp"
+        android:hint="Enter Breed" />
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView9"
         android:layout_alignStart="@+id/textView9"
+        android:layout_below="@id/pet_spinner"
         android:layout_marginTop="25dp"
         android:text="Select Pet Breeds"
         android:textColor="@android:color/black"
         android:textSize="16sp"
+        android:textStyle="normal|bold"
         android:visibility="gone" />
 
     <RelativeLayout
         android:id="@+id/relative_spinner_id"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/textView8"
+        android:layout_below="@id/textView10"
         android:layout_marginTop="5dp"
         android:background="@color/PrimaryColor"
         android:visibility="gone" />
@@ -110,13 +111,14 @@
         android:id="@+id/type_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView8"
-        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/textView8"
+        android:layout_alignStart="@+id/textView8"
+        android:layout_below="@+id/relative_spinner_id"
+        android:layout_marginTop="0dp"
         android:visibility="gone" />
 
     <RelativeLayout
+        android:id="@+id/after_breed_spinner_relative_id"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/type_spinner"
@@ -128,11 +130,11 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView8"
         android:layout_alignStart="@+id/textView8"
-        android:layout_below="@+id/type_spinner"
+        android:layout_below="@+id/other_breed_edit_text_id"
         android:layout_marginRight="30dp"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:hint="Enter Ad title"
+        android:hint="Ad title"
         android:inputType="textPersonName" />
 
     <EditText
