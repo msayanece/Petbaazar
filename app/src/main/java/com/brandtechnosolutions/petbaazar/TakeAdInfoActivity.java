@@ -3,7 +3,6 @@ package com.brandtechnosolutions.petbaazar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -152,31 +151,66 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
 
     }
 
+    //stackoverflowlink: http://stackoverflow.com/questions/15408240/take-photo-from-camera-in-fragment
     //after caturing action finishes, this method will be called
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {      //resultCode = OK or Cancel
-        if (requestCode == 0) {
-            switch (resultCode) {
-                case Activity.RESULT_OK:
-                    if (imageFile.exists()) {       //boolean
+        Toast.makeText(this, "onActivityResult called", Toast.LENGTH_LONG).show();
+        switch (requestCode) {
+            case 0:
+                switch (resultCode) {
+                    case Activity.RESULT_OK:
                         takeImageButton.setVisibility(View.GONE);
                         takePictureTextId.setVisibility(View.GONE);
-                        String imagePath = imageFile.getAbsolutePath();      //file path access
-                        Bitmap bitImage = BitmapFactory.decodeFile(imagePath);       //convert path to bitmap code
+                        Bitmap bitImage = (Bitmap) data.getExtras().get("data");
                         pictureTaken.setImageBitmap(bitImage);        //set bitmap code to imageview (just like setImageResources())
-
-                        Toast.makeText(this, "The Image is stored in the directory: " +
-                                imagePath, Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(this, "Oops...There is a Problem When Taking Picture!"
-                                , Toast.LENGTH_LONG).show();
-                    }
-
-                case Activity.RESULT_CANCELED:
-                    break;
-                default:
-                    break;
-            }
+                        Toast.makeText(this, "picture captured: " + bitImage, Toast.LENGTH_LONG).show();
+                        break;
+                    case Activity.RESULT_CANCELED:
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 1:
+                switch (resultCode) {
+                    case Activity.RESULT_OK:
+                        takeImageButton.setVisibility(View.GONE);
+                        takePictureTextId.setVisibility(View.GONE);
+                        Bitmap bitImage = (Bitmap) data.getExtras().get("data");
+                        pictureTaken.setImageBitmap(bitImage);        //set bitmap code to imageview (just like setImageResources())
+                        Toast.makeText(this, "picture captured: " + bitImage, Toast.LENGTH_LONG).show();
+                        break;
+                    case Activity.RESULT_CANCELED:
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
         }
     }
+
+//    public String getImagePath(Context inContext, Bitmap inImage) {
+//        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+//        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+//        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+//        return path;
+//    }
+//
+//    public String getRealPathFromURI(Uri contentUri) {
+//        Cursor cursor = null;
+//        try {
+//            String[] proj = { MediaStore.Images.Media.DATA };
+//            cursor = this.getContentResolver().query(contentUri,  proj, null, null, null);
+//            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+//            cursor.moveToFirst();
+//            return cursor.getString(column_index);
+//        } finally {
+//            if (cursor != null) {
+//                cursor.close();
+//            }
+//        }
+//    }
 }
