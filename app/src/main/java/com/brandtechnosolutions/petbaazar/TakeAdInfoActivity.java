@@ -57,7 +57,7 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
         spinner.setOnItemSelectedListener(this);
     }
 
-    void onOk(View view) {
+    public void onOk(View view) {
         FragmentManager manager = getSupportFragmentManager();
         SellerOptionFragment dialogFragment = new SellerOptionFragment();
         dialogFragment.show(manager, "Alert");

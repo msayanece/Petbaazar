@@ -279,7 +279,7 @@ public class LoginActivity extends AppCompatActivity implements
         worker.execute(type, accountType, firstName, lastName, email);
     }
 
-    void callNextActivity(View view) {
+    public void callNextActivity(View view) {
         if (view.getId() == R.id.button_login) {
             callBuyerSellerActivity();
         }

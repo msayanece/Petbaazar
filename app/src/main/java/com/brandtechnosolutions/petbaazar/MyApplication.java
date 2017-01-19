@@ -19,6 +19,11 @@ import java.security.NoSuchAlgorithmException;
 
 
 /*
+*
+* take care, after creating the apk, the key hash is changed! because using this code u get
+* the debug keystore hash, but when creating apk, it's another hash,gotta capture it from log after
+* trying ur apk on emulator , then delete code and export again without this log
+*
 * facebook petbaazar url= https://developers.facebook.com/apps/1426136754352468/settings/
 * facebook quickstarts url = https://developers.facebook.com/quickstarts/1426136754352468/?platform=android
 * youtube tutorial url = https://www.youtube.com/watch?v=myWu-q8Q2NA
