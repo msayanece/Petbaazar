@@ -174,9 +174,10 @@
     <ImageView
         android:id="@+id/picture_taken_id"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:layout_below="@id/take_picture_text_id"
-        android:contentDescription="picture taken" />
+        android:contentDescription="picture taken"
+        android:onClick="onclickImage" />
 
     <TextView
         android:id="@+id/contact_information_head_id"
@@ -198,7 +199,8 @@
         android:layout_below="@id/contact_information_head_id"
         android:layout_marginRight="30dp"
         android:layout_marginTop="25dp"
-        android:hint="Name" />
+        android:hint="Name"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/contact_info_email_id"
@@ -208,17 +210,30 @@
         android:layout_below="@id/contact_info_name_id"
         android:layout_marginRight="30dp"
         android:layout_marginTop="25dp"
-        android:hint="Email" />
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/contact_info_mobile_id"
+        android:id="@+id/contact_info_add_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/textView8"
         android:layout_below="@id/contact_info_email_id"
         android:layout_marginRight="30dp"
         android:layout_marginTop="25dp"
-        android:hint="Mobile" />
+        android:hint="Address"
+        android:inputType="textPostalAddress" />
+
+    <EditText
+        android:id="@+id/contact_info_mobile_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/textView8"
+        android:layout_below="@id/contact_info_add_id"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="25dp"
+        android:hint="Mobile"
+        android:inputType="phone" />
 
     <TextView
         android:id="@+id/otp_verification_msg_id"

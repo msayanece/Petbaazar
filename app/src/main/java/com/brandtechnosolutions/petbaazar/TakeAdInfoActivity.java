@@ -2,12 +2,9 @@ package com.brandtechnosolutions.petbaazar;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,26 +18,30 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    TextView petTypeTextView, takePictureTextId;
+    TextView petTypeTextView, takePictureTextId, imageDescriptionText;
     ArrayAdapter spinnerAdapterPetType;
     Spinner spinnerPetType;
     RelativeLayout relativeAfterBreedText, relativeAfterBreedSpinner;
     EditText otherTypeEditText, otherBreedEditText;
     ImageButton takeImageButton;
     ImageView pictureTaken;
-    File imageFile;
+    Bitmap bitImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_ad_info);
+//        imageDescriptionText = findViewById(R.id.text)
         pictureTaken = (ImageView) findViewById(R.id.picture_taken_id);
+        if (savedInstanceState != null) {
+        } else {
+            pictureTaken.setVisibility(View.GONE);
+        }
         takePictureTextId = (TextView) findViewById(R.id.take_picture_text_id);
         takeImageButton = (ImageButton) findViewById(R.id.imageView7);
         petTypeTextView = (TextView) findViewById(R.id.textView10);
@@ -168,7 +169,8 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                     case Activity.RESULT_OK:
                         takeImageButton.setVisibility(View.GONE);
                         takePictureTextId.setVisibility(View.GONE);
-                        Bitmap bitImage = (Bitmap) data.getExtras().get("data");
+                        pictureTaken.setVisibility(View.VISIBLE);
+                        bitImage = (Bitmap) data.getExtras().get("data");
                         pictureTaken.setImageBitmap(bitImage);        //set bitmap code to imageview (just like setImageResources())
                         Toast.makeText(this, "picture captured: " + bitImage, Toast.LENGTH_LONG).show();
                         break;
@@ -183,6 +185,7 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                     case Activity.RESULT_OK:
                         takeImageButton.setVisibility(View.GONE);
                         takePictureTextId.setVisibility(View.GONE);
+                        pictureTaken.setVisibility(View.VISIBLE);
                         //Now you can do whatever you want with your inpustream,
                         // save it as file, upload to a server, decode a bitmap...
                         if (data == null) {
@@ -190,7 +193,7 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                         } else {
                             try {
                                 InputStream inputStream = this.getContentResolver().openInputStream(data.getData());
-                                Bitmap bitImage = BitmapFactory.decodeStream(inputStream);
+                                bitImage = BitmapFactory.decodeStream(inputStream);
                                 pictureTaken.setImageBitmap(bitImage);
                                 Toast.makeText(this, "picture captured: " + inputStream, Toast.LENGTH_LONG).show();
                             } catch (FileNotFoundException e) {
@@ -211,29 +214,39 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
         }
     }
 
+    public void onclickImage(View view) {
+        Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, ViewPictureActivity.class);
+        Toast.makeText(this, "Intent", Toast.LENGTH_LONG).show();
+        intent.putExtra("bmp_Image", bitImage);
+        Toast.makeText(this, "putExtra", Toast.LENGTH_LONG).show();
+        startActivity(intent);
+        Toast.makeText(this, "startActivity", Toast.LENGTH_LONG).show();
+    }
+
     /**
      * helper to retrieve the path of an image URI
      */
-    public String getPath(Uri uri) {
-        // just some safety built in
-        if (uri == null) {
-            return null;
-        }
-        // try to retrieve the image from the media store first
-        // this will only work for images selected from gallery
-        String[] projection = {MediaStore.Images.Media.DATA};
-        Cursor cursor = managedQuery(uri, projection, null, null, null);
-        if (cursor != null) {
-            int column_index = cursor
-                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            String path = cursor.getString(column_index);
-            cursor.close();
-            return path;
-        }
-        // this is our fallback here
-        return uri.getPath();
-    }
+//    public String getPath(Uri uri) {
+//        // just some safety built in
+//        if (uri == null) {
+//            return null;
+//        }
+//        // try to retrieve the image from the media store first
+//        // this will only work for images selected from gallery
+//        String[] projection = {MediaStore.Images.Media.DATA};
+//        Cursor cursor = managedQuery(uri, projection, null, null, null);
+//        if (cursor != null) {
+//            int column_index = cursor
+//                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+//            cursor.moveToFirst();
+//            String path = cursor.getString(column_index);
+//            cursor.close();
+//            return path;
+//        }
+//        // this is our fallback here
+//        return uri.getPath();
+//    }
 //    public String getImagePath(Context inContext, Bitmap inImage) {
 //        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 //        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
