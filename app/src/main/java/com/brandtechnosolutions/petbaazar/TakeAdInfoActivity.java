@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -182,12 +183,16 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                     case Activity.RESULT_OK:
                         takeImageButton.setVisibility(View.GONE);
                         takePictureTextId.setVisibility(View.GONE);
+                        //Now you can do whatever you want with your inpustream,
+                        // save it as file, upload to a server, decode a bitmap...
                         if (data == null) {
                             Toast.makeText(this, "picture not selected!", Toast.LENGTH_LONG).show();
                         } else {
                             try {
                                 InputStream inputStream = this.getContentResolver().openInputStream(data.getData());
-//                                Toast.makeText(this, "picture captured: " + inputStream, Toast.LENGTH_LONG).show();
+                                Bitmap bitImage = BitmapFactory.decodeStream(inputStream);
+                                pictureTaken.setImageBitmap(bitImage);
+                                Toast.makeText(this, "picture captured: " + inputStream, Toast.LENGTH_LONG).show();
                             } catch (FileNotFoundException e) {
                                 e.printStackTrace();
                             }

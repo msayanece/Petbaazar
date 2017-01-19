@@ -56,9 +56,8 @@ public class SellerOptionFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                Intent intent = new Intent();
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
                 getActivity().startActivityForResult(Intent.createChooser(intent, "Select Picture"), 321);
             }
         });
