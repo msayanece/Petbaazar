@@ -31,8 +31,16 @@
     <string name="otp_msg">An OTP will be sent and read if given number is not verified</string>
     <string name="otp_msg_extra">Verifying your number creates trust and increase your chances of getting the right deal.</string>
 
+    <array name="business_type">
+        <item>Select a type</item>
+        <item>Privately-owned business</item>
+        <item>State-owned business</item>
+        <item>Publicly-listed business</item>
+        <item>Charity</item>
+        <item>None, I am an individual</item>
+    </array>
     <array name="pets">
-        <item></item>
+        <item>Select a category</item>
         <item>Cats</item>
         <item>Dogs</item>
         <item>Fishes</item>
