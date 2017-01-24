@@ -108,6 +108,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/button_border"
+        android:onClick="toSellerFullInfo"
         android:text="Agree and Continue"
         android:textColor="@android:color/white" />
 </RelativeLayout>

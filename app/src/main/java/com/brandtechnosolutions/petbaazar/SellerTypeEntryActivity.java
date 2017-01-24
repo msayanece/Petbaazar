@@ -1,5 +1,6 @@
 package com.brandtechnosolutions.petbaazar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -33,5 +34,10 @@ public class SellerTypeEntryActivity extends AppCompatActivity implements Adapte
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+    }
+
+    public void toSellerFullInfo(View view) {
+        Intent intent = new Intent(SellerTypeEntryActivity.this, SellerTakeInfoActivity.class);
+        startActivity(intent);
     }
 }
