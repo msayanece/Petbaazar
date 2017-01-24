@@ -79,7 +79,9 @@
         <activity
             android:name=".SellerTypeEntryActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".SellProductFirstActivity"></activity>
+        <activity
+            android:name=".SellProductFirstActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

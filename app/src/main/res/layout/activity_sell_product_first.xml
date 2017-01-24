@@ -1,13 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_sell_product_first"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.brandtechnosolutions.petbaazar.SellProductFirstActivity">
 
+    <ImageView
+        android:id="@+id/seller_first_image_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/seller_first_activity_imageview" />
+
+    <TextView
+        android:id="@+id/already_seller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seller_first_image_id"
+        android:gravity="center_horizontal"
+        android:text="Already a seller on Petbaazar? Login here"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/seller_email_edit_text_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/seller_first_image_id"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="Email Address"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/password_edit_text_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/seller_email_edit_text_id"
+        android:layout_marginTop="27dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <CheckBox
+        android:id="@+id/remember_me_checkBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password_edit_text_id"
+        android:layout_marginTop="13dp"
+        android:checked="true"
+        android:text="Remember Me"
+        android:textColor="@android:color/black"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/forgot_password_textview_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password_edit_text_id"
+        android:layout_marginTop="20dp"
+        android:gravity="right"
+        android:onClick="forgotPassword"
+        android:text="Forgot Password?"
+        android:textColor="@color/PrimaryColor"
+        android:textSize="11sp" />
+
+    <Button
+        android:id="@+id/seller_first_login_button_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/remember_me_checkBox"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_border"
+        android:onClick="sellerLogin"
+        android:text="Login"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seller_first_login_button_id"
+        android:layout_marginTop="15dp"
+        android:gravity="left"
+        android:text="Not a seller yet?"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seller_first_login_button_id"
+        android:layout_marginTop="15dp"
+        android:gravity="right"
+        android:onClick="createSellerAccount"
+        android:text="Create your store now"
+        android:textColor="@color/PrimaryColor" />
 </RelativeLayout>

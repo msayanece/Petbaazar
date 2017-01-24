@@ -32,7 +32,7 @@ public class OptionActivity extends AppCompatActivity {
         sell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OptionActivity.this, SellerTypeEntryActivity.class);
+                Intent intent = new Intent(OptionActivity.this, SellProductFirstActivity.class);
                 startActivity(intent);
                 Snackbar.make(view, "Please select options!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
