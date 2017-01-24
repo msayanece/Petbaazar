@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_take_ad_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.brandtechnosolutions.petbaazar.TakeAdInfoActivity">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/PrimaryColor"
+            android:focusableInTouchMode="true"
+            app:popupTheme="@style/PopupOverlay" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="29dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="13dp"
+            android:text="Post Free Ad"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView9"
+            android:layout_alignStart="@+id/textView9"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginTop="25dp"
+            android:text="Select Category"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="normal|bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/textView8"
+            android:layout_marginTop="5dp"
+            android:background="@color/PrimaryColor" />
+
+        <Spinner
+            android:id="@+id/pet_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView8"
+            android:layout_alignStart="@+id/textView8"
+            android:layout_below="@+id/textView8"
+            android:layout_marginTop="0dp" />
+
+        <EditText
+            android:id="@+id/other_pet_edit_text_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView8"
+            android:layout_alignStart="@+id/textView8"
+            android:layout_below="@+id/after_breed_spinner_relative_id"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="25dp"
+            android:hint="Enter Pet Type" />
+
+        <EditText
+            android:id="@+id/other_breed_edit_text_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView8"
+            android:layout_alignStart="@+id/textView8"
+            android:layout_below="@+id/other_pet_edit_text_id"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="25dp"
+            android:hint="Enter Breed" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView9"
+            android:layout_alignStart="@+id/textView9"
+            android:layout_below="@id/pet_spinner"
+            android:layout_marginTop="25dp"
+            android:text="Select Pet Breeds"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="normal|bold"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/relative_spinner_id"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/textView10"
+            android:layout_marginTop="5dp"
+            android:background="@color/PrimaryColor"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/type_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView8"
+            android:layout_alignStart="@+id/textView8"
+            android:layout_below="@+id/relative_spinner_id"
+            android:layout_marginTop="0dp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/after_breed_spinner_relative_id"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/type_spinner"
+            android:layout_marginTop="5dp"
+            android:background="@color/PrimaryColor" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView8"
+            android:layout_alignStart="@+id/textView8"
+            android:layout_below="@+id/other_breed_edit_text_id"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:hint="Ad title"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText2"
+            android:layout_alignStart="@+id/editText2"
+            android:layout_below="@+id/editText2"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:hint="Ad Description"
+            android:inputType="textPostalAddress" />
+
+        <ImageButton
+            android:id="@+id/imageView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:onClick="onOk"
+            app:srcCompat="@drawable/image_icon" />
+
+        <TextView
+            android:id="@+id/take_picture_text_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageView7"
+            android:gravity="center_horizontal"
+            android:text="Add Picture"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/picture_taken_id"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/take_picture_text_id"
+            android:contentDescription="picture taken"
+            android:onClick="onclickImage" />
+
+        <TextView
+            android:id="@+id/contact_information_head_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/textView8"
+            android:layout_below="@id/picture_taken_id"
+            android:layout_marginTop="25dp"
+            android:text="Your contact information"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/contact_info_name_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/textView8"
+            android:layout_below="@id/contact_information_head_id"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="25dp"
+            android:hint="Name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/contact_info_email_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/textView8"
+            android:layout_below="@id/contact_info_name_id"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="25dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/contact_info_add_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/textView8"
+            android:layout_below="@id/contact_info_email_id"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="25dp"
+            android:hint="Address"
+            android:inputType="textPostalAddress" />
+
+        <EditText
+            android:id="@+id/contact_info_mobile_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/textView8"
+            android:layout_below="@id/contact_info_add_id"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="25dp"
+            android:hint="Mobile"
+            android:inputType="phone" />
+
+        <TextView
+            android:id="@+id/otp_verification_msg_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/contact_info_mobile_id"
+            android:gravity="center_horizontal"
+            android:text="@string/otp_msg"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/otp_msg_extra_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/otp_verification_msg_id"
+            android:gravity="center_horizontal"
+            android:text="@string/otp_msg_extra"
+            android:textSize="11sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/otp_msg_extra_id"
+            android:layout_margin="25dp"
+            android:background="@drawable/button_border"
+            android:onClick="onclickImage"
+            android:text="Post Your Ad"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+</ScrollView>
+

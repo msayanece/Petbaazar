@@ -260,6 +260,7 @@
         android:layout_below="@id/otp_msg_extra_id"
         android:layout_margin="25dp"
         android:background="@drawable/button_border"
+        android:onClick="onclickImage"
         android:text="Post Your Ad"
         android:textColor="@android:color/white" />
 </RelativeLayout>

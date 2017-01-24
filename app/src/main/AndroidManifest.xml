@@ -73,6 +73,8 @@
         <activity
             android:name=".ViewPictureActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".SellerTakeInfoActivity" />
+        <activity android:name=".SellerTypeEntryActivity"></activity>
     </application>
 
 </manifest>
