@@ -63,7 +63,8 @@
             android:layout_alignLeft="@+id/textView8"
             android:layout_alignStart="@+id/textView8"
             android:layout_below="@+id/textView8"
-            android:layout_marginTop="0dp" />
+            android:layout_marginTop="0dp"
+            android:popupBackground="@drawable/spinner_drawable" />
 
         <EditText
             android:id="@+id/other_pet_edit_text_id"
@@ -118,6 +119,7 @@
             android:layout_alignStart="@+id/textView8"
             android:layout_below="@+id/relative_spinner_id"
             android:layout_marginTop="0dp"
+            android:popupBackground="@drawable/spinner_drawable"
             android:visibility="gone" />
 
         <RelativeLayout
