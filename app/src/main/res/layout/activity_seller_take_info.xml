@@ -75,6 +75,29 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             android:hint="Birthday DD/MM/YYYY" />
+
+        <TextView
+            android:id="@+id/residential_address_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/seller_birth_day_id"
+            android:layout_alignStart="@+id/seller_birth_day_id"
+            android:layout_below="@+id/seller_birth_day_id"
+            android:layout_marginTop="30dp"
+            android:text="Residential Address"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <AutoCompleteTextView
+            android:id="@+id/autocomplete_textview_seller_info_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/residential_address_id"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="Country" />
     </RelativeLayout>
 </ScrollView>
 
