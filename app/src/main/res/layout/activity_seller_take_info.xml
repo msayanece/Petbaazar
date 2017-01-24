@@ -98,6 +98,36 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             android:hint="Country" />
+
+        <EditText
+            android:id="@+id/postcode_pin_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/autocomplete_textview_seller_info_id"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="Postcode / PIN" />
+
+        <EditText
+            android:id="@+id/house_number_or_building_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/postcode_pin_id"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="House number or Building" />
+
+        <EditText
+            android:id="@+id/street_locality_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/house_number_or_building_id"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="Street or Locality" />
     </RelativeLayout>
 </ScrollView>
 
