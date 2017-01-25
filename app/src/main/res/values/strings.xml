@@ -38,6 +38,7 @@
     <string name="not_a_seller_yet">Not a seller yet?</string>
     <string name="password">Password</string>
     <string name="remember_me">Remember Me</string>
+    <string name="continues">Continue</string>
 
     <array name="business_type">
         <item>Select a type</item>

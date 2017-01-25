@@ -146,7 +146,8 @@
             android:layout_below="@+id/city_town_id"
             android:layout_margin="30dp"
             android:background="@drawable/button_border"
-            android:text="Continue"
+            android:onClick="continueToNextPage"
+            android:text="@string/continues"
             android:textColor="@android:color/white" />
     </RelativeLayout>
 </ScrollView>
