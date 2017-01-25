@@ -39,6 +39,8 @@
     <string name="password">Password</string>
     <string name="remember_me">Remember Me</string>
     <string name="continues">Continue</string>
+    <string name="city_or_town">City or Town</string>
+    <string name="reset_password">Reset Password</string>
 
     <array name="business_type">
         <item>Select a type</item>
@@ -91,4 +93,10 @@
         <item>INDIAN MONDAIN</item>
         <item>INDIAN PEARL HIGHFLIER</item>
     </array>
+    <string name="title_activity_petbaazar_seller_main">PetbaazarSellerMainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

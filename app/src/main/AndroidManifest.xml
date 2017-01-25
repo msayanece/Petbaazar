@@ -88,6 +88,13 @@
         <activity
             android:name=".VerifyMobileOTPActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".PetbaazarSellerMainActivity"
+            android:label="@string/title_activity_petbaazar_seller_main"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

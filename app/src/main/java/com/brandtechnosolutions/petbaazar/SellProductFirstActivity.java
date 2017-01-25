@@ -25,7 +25,9 @@ public class SellProductFirstActivity extends AppCompatActivity {
     }
 
     public void forgotPassword(View view) {
-        Snackbar.make(view, "This part is under development!", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+        Intent intent = new Intent(SellProductFirstActivity.this, ResetPasswordActivity.class);
+        startActivity(intent);
+//        Snackbar.make(view, "This part is under development!", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show();
     }
 }

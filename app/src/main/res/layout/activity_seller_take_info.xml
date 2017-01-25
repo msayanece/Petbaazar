@@ -137,7 +137,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:hint="City or Town" />
+            android:hint="@string/city_or_town" />
 
         <Button
             android:id="@+id/personal_details_button_id"
