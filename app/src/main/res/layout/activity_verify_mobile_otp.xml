@@ -60,8 +60,7 @@
         android:layout_alignLeft="@+id/textView17"
         android:layout_alignStart="@+id/textView17"
         android:layout_below="@+id/textView17"
-        android:layout_marginTop="20dp"
-        android:text="7003214567" />
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/textView19"
@@ -110,6 +109,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginTop="53dp"
         android:background="@drawable/button_border"
+        android:onClick="verify"
         android:text="Verify"
         android:textColor="@android:color/white" />
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -55,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements
     private static final int RC_SIGN_IN = 007;
     private static String TAG = "sayan";
     AccessTokenTracker atTracker;
+    private EditText mobile;
     private ProfileTracker pTracker;
     private LoginButton loginButton;
     private CallbackManager mcallbackManager;
@@ -117,7 +120,9 @@ public class LoginActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-                                                                                         //facebook button read permissions
+
+        mobile = (EditText) findViewById(R.id.editText);
+        //facebook button read permissions
         loginButton = (LoginButton) findViewById(R.id.facebook);
         loginButton.setReadPermissions("email", "public_profile");
                                                                                         //google button wide size, set onClickListener
@@ -281,7 +286,14 @@ public class LoginActivity extends AppCompatActivity implements
 
     public void callNextActivity(View view) {
         if (view.getId() == R.id.button_login) {
-            callBuyerSellerActivity();
+            String tempMobile = mobile.getText().toString();
+            if (tempMobile.length() != 0) {
+                Intent intent = new Intent(LoginActivity.this, VerifyMobileOTPActivity.class);
+                intent.putExtra("mobile", tempMobile);
+                startActivity(intent);
+            } else {
+                Snackbar.make(view, "Please enter your mobile number!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            }
         }
     }
 
