@@ -29,7 +29,7 @@
         android:layout_below="@id/seller_first_image_id"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:text="Already a seller on Petbaazar? Login here"
+        android:text="@string/already_a_seller_on_petbaazar_login_here"
         android:textColor="@android:color/black" />
 
     <EditText
@@ -43,7 +43,7 @@
         android:layout_below="@+id/seller_first_image_id"
         android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="Email Address"
+        android:hint="@string/email_address"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -55,7 +55,7 @@
         android:layout_below="@+id/seller_email_edit_text_id"
         android:layout_marginTop="27dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
     <CheckBox
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/password_edit_text_id"
         android:checked="true"
-        android:text="Remember Me"
+        android:text="@string/remember_me"
         android:textColor="@android:color/black" />
 
     <TextView
@@ -77,7 +77,7 @@
         android:layout_marginTop="7dp"
         android:gravity="right"
         android:onClick="forgotPassword"
-        android:text="Forgot Password?"
+        android:text="@string/forgot_password"
         android:textColor="@color/PrimaryColor"
         android:textStyle="bold" />
 
@@ -91,7 +91,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/button_border"
         android:onClick="sellerLogin"
-        android:text="Login"
+        android:text="@string/login_sell_first"
         android:textColor="@android:color/white" />
 
     <TextView
@@ -101,7 +101,7 @@
         android:layout_below="@+id/seller_first_login_button_id"
         android:layout_marginTop="15dp"
         android:gravity="left"
-        android:text="Not a seller yet?"
+        android:text="@string/not_a_seller_yet"
         android:textColor="@android:color/black" />
 
     <TextView
@@ -113,7 +113,7 @@
         android:layout_marginTop="15dp"
         android:gravity="right"
         android:onClick="createSellerAccount"
-        android:text="Create your store now"
+        android:text="@string/create_your_store_now"
         android:textColor="@color/PrimaryColor"
         android:textStyle="bold" />
 </RelativeLayout>

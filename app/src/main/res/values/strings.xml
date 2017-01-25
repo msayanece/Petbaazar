@@ -30,6 +30,14 @@
     <string name="title_activity_option">OptionActivity</string>
     <string name="otp_msg">An OTP will be sent and read if given number is not verified</string>
     <string name="otp_msg_extra">Verifying your number creates trust and increase your chances of getting the right deal.</string>
+    <string name="already_a_seller_on_petbaazar_login_here">Already a seller on Petbaazar? Login here</string>
+    <string name="create_your_store_now">Create your store now</string>
+    <string name="email_address">Email Address</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login_sell_first">Login</string>
+    <string name="not_a_seller_yet">Not a seller yet?</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember Me</string>
 
     <array name="business_type">
         <item>Select a type</item>
