@@ -82,7 +82,10 @@
         <activity
             android:name=".SellProductFirstActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".SellerProductDetailsActivity"></activity>
+        <activity
+            android:name=".SellerProductDetailsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".VerifyMobileOTPActivity"></activity>
     </application>
 
 </manifest>
