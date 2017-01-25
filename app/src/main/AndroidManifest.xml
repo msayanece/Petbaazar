@@ -85,7 +85,9 @@
         <activity
             android:name=".SellerProductDetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".VerifyMobileOTPActivity"></activity>
+        <activity
+            android:name=".VerifyMobileOTPActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>
