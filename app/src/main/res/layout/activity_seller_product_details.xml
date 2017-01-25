@@ -15,5 +15,27 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.brandtechnosolutions.petbaazar.SellerProductDetailsActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/PrimaryColor"
+        android:focusableInTouchMode="true"
+        android:theme="@style/PopupOverlay" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:text="Product Details"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="normal|bold" />
 </RelativeLayout>
 </ScrollView>
