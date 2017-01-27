@@ -2,6 +2,7 @@ package com.brandtechnosolutions.petbaazar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -28,4 +29,7 @@ public class VerifyMobileOTPActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void resendOTP(View view) {
+        Snackbar.make(view, "This part is under development!", Snackbar.LENGTH_LONG).show();
+    }
 }

@@ -101,7 +101,8 @@
         android:layout_alignStart="@+id/editText4"
         android:layout_below="@+id/editText4"
         android:layout_marginTop="27dp"
-        android:text="Resend OTP"
+        android:onClick="resendOTP"
+        android:text="@string/resend_otp"
         android:textColor="@color/PrimaryColor"
         android:textStyle="bold" />
 
