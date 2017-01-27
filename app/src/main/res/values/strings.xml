@@ -115,4 +115,6 @@
     <string name="submit_pass_reset">Submit</string>
     <string name="find_pet">Find Pet</string>
     <string name="resend_otp">Resend OTP</string>
+    <string name="welcome_seller">Welcome Seller</string>
+    <string name="email_gmail_com">email@gmail.com</string>
 </resources>
