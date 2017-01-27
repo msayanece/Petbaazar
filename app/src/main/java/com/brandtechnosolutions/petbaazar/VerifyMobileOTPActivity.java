@@ -23,4 +23,9 @@ public class VerifyMobileOTPActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void changeMobileNumber(View view) {
+        Intent intent = new Intent(VerifyMobileOTPActivity.this, ChangeMobileNumberActivity.class);
+        startActivity(intent);
+    }
+
 }

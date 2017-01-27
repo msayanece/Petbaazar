@@ -110,9 +110,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/seller_first_login_button_id"
-        android:layout_marginTop="15dp"
-        android:gravity="right"
+        android:gravity="end"
         android:onClick="createSellerAccount"
+        android:padding="15dp"
         android:text="@string/create_your_store_now"
         android:textColor="@color/PrimaryColor"
         android:textStyle="bold" />

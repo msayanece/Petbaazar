@@ -304,6 +304,7 @@ public class LoginActivity extends AppCompatActivity implements
 
     void startWebActivity() {
         Intent intent = new Intent(LoginActivity.this, WebActivity.class);
+        intent.putExtra("url", "http://brandtechnosolutions.com/bts/petbaazar/index.php?route=common/home");
         startActivity(intent);
     }
 //    @Override                                                                         //if ProfileTracker.startTracking() and AccessTokenTracker.startTracking() called

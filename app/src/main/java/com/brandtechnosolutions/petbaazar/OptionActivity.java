@@ -26,6 +26,7 @@ public class OptionActivity extends AppCompatActivity {
                 Snackbar.make(view, "Please mention category!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 Intent intent = new Intent(OptionActivity.this, WebActivity.class);
+                intent.putExtra("url", "http://brandtechnosolutions.com/bts/petbaazar/index.php?route=product/search");
                 startActivity(intent);
             }
         });

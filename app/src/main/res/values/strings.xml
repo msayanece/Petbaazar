@@ -107,4 +107,10 @@
     <string name="communicate">Communicate</string>
     <string name="settings">Settings</string>
     <string name="add_your_product_to_petbaazar">Add your product to Petbaazar</string>
+    <string name="change_mobile_number">Change Mobile Number</string>
+    <string name="change_mobile_number_activity_string">Change Mobile Number</string>
+    <string name="enter_new_mobile_number">Enter new mobile number</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit_pass_reset">Submit</string>
 </resources>

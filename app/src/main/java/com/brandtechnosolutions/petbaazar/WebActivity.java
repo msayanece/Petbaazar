@@ -5,6 +5,7 @@
 
 package com.brandtechnosolutions.petbaazar;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -21,14 +22,16 @@ import android.widget.ProgressBar;
 public class WebActivity extends AppCompatActivity {
 
     private static String TAG = "sayan";                          //for log output
-    private ProgressBar progress;
-    private static String URL ="http://brandtechnosolutions.com/bts/petbaazar/";  //home url
     WebView view;
+    private ProgressBar progress;
+    private String url;                                    //home url
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
+        Intent intent = getIntent();
+        url = intent.getStringExtra("url");
         progress = (ProgressBar) findViewById(R.id.progressBar);
         progress.setProgress(0);
         progress.setMax(100);
@@ -57,7 +60,7 @@ public class WebActivity extends AppCompatActivity {
             Bundle bundle = savedInstanceState.getBundle("state");
             view.restoreState(bundle);
         }else{
-            view.loadUrl(URL);                                    //given url loading
+            view.loadUrl(url);                                    //given url loading
         }
     }
 
