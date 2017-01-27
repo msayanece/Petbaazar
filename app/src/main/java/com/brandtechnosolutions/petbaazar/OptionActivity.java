@@ -23,8 +23,8 @@ public class OptionActivity extends AppCompatActivity {
         find.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Please mention category!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Please mention category!", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
                 Intent intent = new Intent(OptionActivity.this, WebActivity.class);
                 intent.putExtra("url", "http://brandtechnosolutions.com/bts/petbaazar/index.php?route=product/search");
                 startActivity(intent);

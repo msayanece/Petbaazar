@@ -23,10 +23,12 @@ public class ChangeMobileNumberActivity extends AppCompatActivity {
             String temp = number.getText().toString();
             if (temp.length() == 0) {
                 Snackbar.make(view, "Hmm, looks like you forgot to enter new number!", Snackbar.LENGTH_LONG).show();
-            } else {
+            } else if (temp.length() == 10) {
                 Intent intent = new Intent(ChangeMobileNumberActivity.this, VerifyMobileOTPActivity.class);
                 intent.putExtra("mobile", temp);
                 startActivity(intent);
+            } else {
+                Snackbar.make(view, "Wrong number! Enter 10 digit mobile number!", Snackbar.LENGTH_LONG).show();
             }
         } else if (view.getId() == R.id.button8) {
             super.onBackPressed();

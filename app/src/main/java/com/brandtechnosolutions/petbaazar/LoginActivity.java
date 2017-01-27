@@ -287,12 +287,14 @@ public class LoginActivity extends AppCompatActivity implements
     public void callNextActivity(View view) {
         if (view.getId() == R.id.button_login) {
             String tempMobile = mobile.getText().toString();
-            if (tempMobile.length() != 0) {
+            if (tempMobile.length() == 10) {
                 Intent intent = new Intent(LoginActivity.this, VerifyMobileOTPActivity.class);
                 intent.putExtra("mobile", tempMobile);
                 startActivity(intent);
+            } else if (tempMobile.length() == 0) {
+                Snackbar.make(view, "Please enter your mobile number first!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             } else {
-                Snackbar.make(view, "Please enter your mobile number!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                Snackbar.make(view, "Oops! Wrong mobile number! Try again", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         }
     }
