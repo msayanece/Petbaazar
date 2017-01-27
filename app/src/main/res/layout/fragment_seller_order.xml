@@ -15,7 +15,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="51dp"
-        android:text="Orders" />
+        android:text="Orders"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/button10"

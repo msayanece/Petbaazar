@@ -107,6 +107,10 @@ public class PetbaazarSellerMainActivity extends AppCompatActivity
                 transaction.commit();
                 break;
             case R.id.nav_catalogue:
+                fragment = new SellerCatalogueFragment();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container_id, fragment);
+                transaction.commit();
                 break;
             case R.id.nav_payments:
                 break;
