@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="Gray">#ffffff</color>
-    <color name="PrimaryColor">#ff6e07</color>
+    <color name="PrimaryColor">#e96f0d</color>
+    <color name="PrimaryColorLighter">#ffc595</color>
+    <color name="PrimaryColorDarker">#ef4d07</color>
     <color name="SecondaryColor">#434141</color>
 </resources>

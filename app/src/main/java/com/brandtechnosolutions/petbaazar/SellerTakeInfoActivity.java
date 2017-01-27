@@ -20,7 +20,7 @@ public class SellerTakeInfoActivity extends AppCompatActivity {
     }
 
     public void continueToNextPage(View view) {
-        Intent intent = new Intent(SellerTakeInfoActivity.this, SellerProductDetailsActivity.class);
+        Intent intent = new Intent(SellerTakeInfoActivity.this, PetbaazarSellerMainActivity.class);
         startActivity(intent);
     }
 }

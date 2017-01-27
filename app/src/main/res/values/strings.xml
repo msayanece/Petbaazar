@@ -93,10 +93,18 @@
         <item>INDIAN MONDAIN</item>
         <item>INDIAN PEARL HIGHFLIER</item>
     </array>
-    <string name="title_activity_petbaazar_seller_main">PetbaazarSellerMainActivity</string>
+    <string name="title_activity_petbaazar_seller_main">Seller Home</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Logout</string>
+    <string name="home">Home</string>
+    <string name="orders">Orders</string>
+    <string name="catalogue">Catalogue</string>
+    <string name="payments">Payments</string>
+    <string name="returns">Returns</string>
+    <string name="communicate">Communicate</string>
+    <string name="settings">Settings</string>
+    <string name="add_your_product_to_petbaazar">Add your product to Petbaazar</string>
 </resources>
