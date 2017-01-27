@@ -17,7 +17,7 @@
     <string name="buy_fragment">I want to Buy</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_product">Add your product</string>
     <string name="take_a_picture_of_your_pet">Take a picture of your pet</string>
     <string name="open_camera">Open Camera</string>
     <string name="open_gallery">Open Gallery</string>
