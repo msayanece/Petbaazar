@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <include layout="@layout/content_petbaazar_seller_main" />
+    <!--<include layout="@layout/content_petbaazar_seller_main" />-->
 
     <!--<android.support.design.widget.FloatingActionButton-->
     <!--android:id="@+id/fab"-->
