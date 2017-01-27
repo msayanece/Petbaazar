@@ -98,7 +98,9 @@
         <activity
             android:name=".ChangeMobileNumberActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".FindPetActivity"></activity>
+        <activity
+            android:name=".FindPetActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

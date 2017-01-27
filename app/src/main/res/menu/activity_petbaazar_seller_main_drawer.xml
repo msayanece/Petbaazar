@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/nav_orders"
+            android:icon="@drawable/ic_menu_order"
+            android:title="@string/orders" />
+        <item
+            android:id="@+id/nav_catalogue"
+            android:icon="@drawable/ic_menu_catalogue"
+            android:title="@string/catalogue" />
+        <item
+            android:id="@+id/nav_payments"
+            android:icon="@drawable/ic_menu_payments"
+            android:title="@string/payments" />
+        <item
+            android:id="@+id/nav_returns"
+            android:icon="@drawable/ic_menu_return"
+            android:title="@string/returns" />
+    </group>
+
+    <item android:title="@string/communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_menu_settings"
+                android:title="@string/settings" />
+            <item
+                android:id="@+id/nav_add"
+                android:icon="@drawable/ic_menu_add_product"
+                android:title="@string/add_your_product_to_petbaazar" />
+        </menu>
+    </item>
+
+</menu>
