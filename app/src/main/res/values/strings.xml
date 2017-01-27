@@ -93,7 +93,7 @@
         <item>INDIAN MONDAIN</item>
         <item>INDIAN PEARL HIGHFLIER</item>
     </array>
-    <string name="title_activity_petbaazar_seller_main">Seller Home</string>
+    <string name="title_activity_petbaazar_seller_main">Petbaazar</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

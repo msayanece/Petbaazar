@@ -2,6 +2,7 @@ package com.brandtechnosolutions.petbaazar;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,11 +14,19 @@ import android.view.MenuItem;
 public class PetbaazarSellerMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    NavigationView navigationView;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_petbaazar_seller_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//
+//        SellerHomeFragment Fragment = new SellerHomeFragment();
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.fragment_container_id, Fragment);
+//        transaction.commit();
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -35,8 +44,11 @@ public class PetbaazarSellerMainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        if (savedInstanceState == null) {
+            navigationView.getMenu().performIdentifierAction(R.id.nav_home, 0);
+        }
     }
 
     @Override
@@ -77,23 +89,35 @@ public class PetbaazarSellerMainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        FragmentSuper fragment = null;
+        FragmentTransaction transaction = null;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_orders) {
-
-        } else if (id == R.id.nav_catalogue) {
-
-        } else if (id == R.id.nav_payments) {
-
-        } else if (id == R.id.nav_returns) {
-
-        } else if (id == R.id.nav_setting) {
-
-        } else if (id == R.id.nav_add) {
-
+        switch (id) {
+            case R.id.nav_home:
+                fragment = new SellerHomeFragment();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container_id, fragment);
+                transaction.commit();
+                break;
+            case R.id.nav_orders:
+                fragment = new SellerOrderFragment();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container_id, fragment);
+                transaction.commit();
+                break;
+            case R.id.nav_catalogue:
+                break;
+            case R.id.nav_payments:
+                break;
+            case R.id.nav_returns:
+                break;
+            case R.id.nav_setting:
+                break;
+            case R.id.nav_add:
+                break;
+            default:
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
