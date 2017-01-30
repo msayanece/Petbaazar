@@ -64,6 +64,7 @@
         <activity
             android:name=".OptionActivity"
             android:label="@string/title_activity_option"
+            android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
