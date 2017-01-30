@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements
             parameters.putString("fields", "id,name,email,gender,birthday");
             request.setParameters(parameters);
             request.executeAsync();
-            callBuyerSellerActivity();
+            callOptionActivity();
             Toast.makeText(getApplicationContext(), "Log in Successful!", Toast.LENGTH_LONG).show();
         }
         @Override
@@ -211,6 +211,7 @@ public class LoginActivity extends AppCompatActivity implements
     //onConnectionFailed
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Toast.makeText(this, "Connection Failed!", Toast.LENGTH_LONG).show();
         Log.d(TAG, "GoogleOnConnectionFailed");
     }
 
@@ -243,7 +244,7 @@ public class LoginActivity extends AppCompatActivity implements
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             putGoogleAccountInformation(acct);
-            callBuyerSellerActivity();
+            callOptionActivity();
         }
     }
 //            updateUI(true);
@@ -304,7 +305,7 @@ public class LoginActivity extends AppCompatActivity implements
         }
     }
 
-    void callBuyerSellerActivity() {
+    void callOptionActivity() {
         Intent intent = new Intent(this, OptionActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -321,7 +322,16 @@ public class LoginActivity extends AppCompatActivity implements
     @Override
     public void onStart() {
         super.onStart();
-
+        if (AccessToken.getCurrentAccessToken() == null) {
+            Toast.makeText(getApplicationContext(), "New", Toast.LENGTH_LONG).show();
+        } else {
+            Profile profile = Profile.getCurrentProfile();
+            if (profile != null) {
+                putFacebookProfileInformation(profile);
+            }
+            Toast.makeText(getApplicationContext(), "old", Toast.LENGTH_LONG).show();
+            callOptionActivity();
+        }
         OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient);
         if (opr.isDone()) {
             // If the user's cached credentials are valid, the OptionalPendingResult will be "done"
