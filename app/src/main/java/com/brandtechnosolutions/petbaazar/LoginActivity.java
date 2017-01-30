@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity implements
 
     private static final int RC_SIGN_IN = 007;
     private static String TAG = "sayan";
+    String textMobile;
     AccessTokenTracker atTracker;
     private EditText mobile;
     private ProfileTracker pTracker;
@@ -292,12 +293,12 @@ public class LoginActivity extends AppCompatActivity implements
 
     public void callNextActivity(View view) {
         if (view.getId() == R.id.button_login) {
-            String tempMobile = mobile.getText().toString();
-            if (tempMobile.length() == 10) {
+            textMobile = mobile.getText().toString();
+            if (textMobile.length() == 10) {
                 Intent intent = new Intent(LoginActivity.this, VerifyMobileOTPActivity.class);
-                intent.putExtra("mobile", tempMobile);
+                intent.putExtra("mobile", textMobile);
                 startActivity(intent);
-            } else if (tempMobile.length() == 0) {
+            } else if (textMobile.length() == 0) {
                 Snackbar.make(view, "Please enter your mobile number first!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             } else {
                 Snackbar.make(view, "Oops! Wrong mobile number! Try again", Snackbar.LENGTH_LONG).setAction("Action", null).show();
@@ -322,16 +323,19 @@ public class LoginActivity extends AppCompatActivity implements
     @Override
     public void onStart() {
         super.onStart();
+        //manual silent sign in for mobile number
+        if (textMobile == null) {
+        }
+        //facebook silent sign in
         if (AccessToken.getCurrentAccessToken() == null) {
-            Toast.makeText(getApplicationContext(), "New", Toast.LENGTH_LONG).show();
         } else {
             Profile profile = Profile.getCurrentProfile();
             if (profile != null) {
                 putFacebookProfileInformation(profile);
             }
-            Toast.makeText(getApplicationContext(), "old", Toast.LENGTH_LONG).show();
             callOptionActivity();
         }
+        //google silent sign in
         OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient);
         if (opr.isDone()) {
             // If the user's cached credentials are valid, the OptionalPendingResult will be "done"
@@ -343,30 +347,12 @@ public class LoginActivity extends AppCompatActivity implements
             // If the user has not previously signed in on this device or the sign-in has expired,
             // this asynchronous branch will attempt to sign in the user silently.  Cross-device
             // single sign-on will occur in this branch.
-            showProgressDialog();
             opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
                 @Override
                 public void onResult(GoogleSignInResult googleSignInResult) {
-                    hideProgressDialog();
                     handleSignInResult(googleSignInResult);
                 }
             });
-        }
-    }
-
-    private void showProgressDialog() {
-        if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(this);
-            mProgressDialog.setMessage("Wait...");
-            mProgressDialog.setIndeterminate(true);
-        }
-
-        mProgressDialog.show();
-    }
-
-    private void hideProgressDialog() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.hide();
         }
     }
 //    @Override                                                                         //if ProfileTracker.startTracking() and AccessTokenTracker.startTracking() called

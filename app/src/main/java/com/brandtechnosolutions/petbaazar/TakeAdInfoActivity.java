@@ -69,7 +69,6 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String tempString = adapterView.getItemAtPosition(i).toString();
         loadSpinner(tempString);
-//        Toast.makeText(this,"selected: "+tempString,Toast.LENGTH_LONG).show();
     }
 
     void loadSpinner(String spinnerString) {
@@ -162,7 +161,6 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
     //after caturing action finishes, this method will be called
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {      //resultCode = OK or Cancel
-        Toast.makeText(this, "onActivityResult called", Toast.LENGTH_LONG).show();
         switch (requestCode) {
             case 123:
                 switch (resultCode) {
@@ -172,11 +170,13 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                         pictureTaken.setVisibility(View.VISIBLE);
                         bitImage = (Bitmap) data.getExtras().get("data");
                         pictureTaken.setImageBitmap(bitImage);        //set bitmap code to imageview (just like setImageResources())
-                        Toast.makeText(this, "picture captured: " + bitImage, Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Picture captured successfully", Toast.LENGTH_SHORT).show();
                         break;
                     case Activity.RESULT_CANCELED:
+                        Toast.makeText(this, "Canceled!", Toast.LENGTH_SHORT).show();
                         break;
                     default:
+                        Toast.makeText(this, "Something went wrong!" + bitImage, Toast.LENGTH_SHORT).show();
                         break;
                 }
                 break;
@@ -189,13 +189,13 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                         //Now you can do whatever you want with your inpustream,
                         // save it as file, upload to a server, decode a bitmap...
                         if (data == null) {
-                            Toast.makeText(this, "picture not selected!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "picture is not selected!", Toast.LENGTH_SHORT).show();
                         } else {
                             try {
                                 InputStream inputStream = this.getContentResolver().openInputStream(data.getData());
                                 bitImage = BitmapFactory.decodeStream(inputStream);
                                 pictureTaken.setImageBitmap(bitImage);
-                                Toast.makeText(this, "picture captured: " + inputStream, Toast.LENGTH_LONG).show();
+                                Toast.makeText(this, "picture selected successfully", Toast.LENGTH_SHORT).show();
                             } catch (FileNotFoundException e) {
                                 e.printStackTrace();
                             }
@@ -204,24 +204,23 @@ public class TakeAdInfoActivity extends AppCompatActivity implements AdapterView
                         }
                         break;
                     case Activity.RESULT_CANCELED:
+                        Toast.makeText(this, "Canceled!", Toast.LENGTH_SHORT).show();
                         break;
                     default:
+                        Toast.makeText(this, "Something went wrong!" + bitImage, Toast.LENGTH_SHORT).show();
                         break;
                 }
                 break;
             default:
+                Toast.makeText(this, "Something went wrong! Cannot add picture!" + bitImage, Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 
     public void onclickImage(View view) {
-        Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, ViewPictureActivity.class);
-        Toast.makeText(this, "Intent", Toast.LENGTH_LONG).show();
         intent.putExtra("bmp_Image", bitImage);
-        Toast.makeText(this, "putExtra", Toast.LENGTH_LONG).show();
         startActivity(intent);
-        Toast.makeText(this, "startActivity", Toast.LENGTH_LONG).show();
     }
 
     /**
