@@ -1,5 +1,6 @@
 package com.brandtechnosolutions.petbaazar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -10,12 +11,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class PetbaazarSellerMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    NavigationView navigationView;
-    Toolbar toolbar;
+    private String firstName, lastName;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +30,9 @@ public class PetbaazarSellerMainActivity extends AppCompatActivity
 //        transaction.replace(R.id.fragment_container_id, Fragment);
 //        transaction.commit();
 
+        Intent intent = getIntent();
+        firstName = intent.getStringExtra("first name");
+        lastName = intent.getStringExtra("last name");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -46,9 +53,13 @@ public class PetbaazarSellerMainActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
         if (savedInstanceState == null) {
             navigationView.getMenu().performIdentifierAction(R.id.nav_home, 0);
         }
+        TextView welcomeMsg = (TextView) navigationView.getHeaderView(0).findViewById(R.id.welcome_msg_nav_head_text_view_id);
+        Toast.makeText(this, "welcome: " + welcomeMsg, Toast.LENGTH_LONG).show();
+        welcomeMsg.setText("Welcome " + firstName + "!");
     }
 
     @Override
