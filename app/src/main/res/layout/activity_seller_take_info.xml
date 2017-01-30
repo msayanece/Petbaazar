@@ -84,7 +84,7 @@
             android:layout_alignStart="@+id/seller_birth_day_id"
             android:layout_below="@+id/seller_birth_day_id"
             android:layout_marginTop="30dp"
-            android:text="Residential Address"
+            android:text="@string/personal_details_residential_address"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -139,11 +139,34 @@
             android:layout_marginTop="10dp"
             android:hint="@string/city_or_town" />
 
+        <TextView
+            android:id="@+id/personal_details_email_id_textView_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/city_town_id"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/_personal_details_email_address"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/personal_details_email_id_editText_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/personal_details_email_id_textView_id"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="@string/enter_email_id_here" />
+
         <Button
             android:id="@+id/personal_details_button_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/city_town_id"
+            android:layout_below="@+id/personal_details_email_id_editText_id"
             android:layout_margin="30dp"
             android:background="@drawable/button_border"
             android:onClick="continueToNextPage"

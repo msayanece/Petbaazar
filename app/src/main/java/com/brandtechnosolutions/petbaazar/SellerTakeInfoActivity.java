@@ -12,7 +12,7 @@ public class SellerTakeInfoActivity extends AppCompatActivity {
 
     private static final String[] COUNTRIES = new CountyDetails().getCountry();
     private EditText firstNameEditText;
-    private EditText lastNameEditText;
+    private EditText emailEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,16 +21,16 @@ public class SellerTakeInfoActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, COUNTRIES);
         textView.setAdapter(adapter);
         firstNameEditText = (EditText) findViewById(R.id.seller_first_name_id);
-        lastNameEditText = (EditText) findViewById(R.id.seller_last_name_id);
+        emailEditText = (EditText) findViewById(R.id.personal_details_email_id_editText_id);
     }
 
     public void continueToNextPage(View view) {
-        String firstNameTemp, lastNameTemp;
+        String firstNameTemp = "", emailTemp = "";
         firstNameTemp = firstNameEditText.getText().toString();
-        lastNameTemp = lastNameEditText.getText().toString();
+        emailTemp = emailEditText.getText().toString();
         Intent intent = new Intent(SellerTakeInfoActivity.this, PetbaazarSellerMainActivity.class);
         intent.putExtra("first name", firstNameTemp);
-        intent.putExtra("last name", lastNameTemp);
+        intent.putExtra("email", emailTemp);
         startActivity(intent);
     }
 }

@@ -120,4 +120,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="returns">Returns</string>
+    <string name="_personal_details_email_address">Email Address</string>
+    <string name="personal_details_residential_address">Residential Address</string>
+    <string name="enter_email_id_here">Enter Email id here</string>
 </resources>

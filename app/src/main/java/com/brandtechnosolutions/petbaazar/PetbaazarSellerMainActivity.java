@@ -12,12 +12,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class PetbaazarSellerMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private String firstName, lastName;
+    private String firstName, email;
     private NavigationView navigationView;
     private Toolbar toolbar;
     @Override
@@ -32,7 +31,7 @@ public class PetbaazarSellerMainActivity extends AppCompatActivity
 
         Intent intent = getIntent();
         firstName = intent.getStringExtra("first name");
-        lastName = intent.getStringExtra("last name");
+        email = intent.getStringExtra("email");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -58,9 +57,23 @@ public class PetbaazarSellerMainActivity extends AppCompatActivity
             navigationView.getMenu().performIdentifierAction(R.id.nav_home, 0);
         }
         TextView welcomeMsg = (TextView) navigationView.getHeaderView(0).findViewById(R.id.welcome_msg_nav_head_text_view_id);
-        Toast.makeText(this, "welcome: " + welcomeMsg, Toast.LENGTH_LONG).show();
-        welcomeMsg.setText("Welcome " + firstName + "!");
+        TextView emailMsg = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_bar_head_email_textView);
+        if (firstName == null) {
+            welcomeMsg.setText("Welcome Seller");
+        } else if (firstName.length() == 0) {
+            welcomeMsg.setText("Welcome Seller");
+        } else {
+            welcomeMsg.setText("Welcome " + firstName);
+        }
+        if (email == null) {
+            emailMsg.setText("No email address found!");
+        } else if (email.length() == 0) {
+            emailMsg.setText("No email address found!");
+        } else {
+            emailMsg.setText(email);
+        }
     }
+
 
     @Override
     public void onBackPressed() {
