@@ -4,13 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/activity_take_ad_info"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context="com.brandtechnosolutions.petbaazar.TakeAdInfoActivity">
 
         <android.support.v7.widget.Toolbar
@@ -31,7 +30,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
-            android:text="Personal information"
+            android:text="@string/personal_information"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="normal|bold" />
@@ -44,7 +43,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="25dp"
-            android:hint="First name" />
+            android:hint="@string/first_name"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/seller_middle_name_id"
@@ -54,7 +54,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:hint="Middle name" />
+            android:hint="@string/middle_name"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/seller_last_name_id"
@@ -64,7 +65,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:hint="Last name" />
+            android:hint="@string/last_name"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/seller_birth_day_id"
@@ -74,7 +76,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:hint="Birthday DD/MM/YYYY" />
+            android:hint="Birthday DD/MM/YYYY"
+            android:inputType="date" />
 
         <TextView
             android:id="@+id/residential_address_id"
@@ -97,7 +100,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:hint="Country" />
+            android:hint="@string/country"
+            android:inputType="textAutoComplete" />
 
         <EditText
             android:id="@+id/postcode_pin_id"
@@ -107,7 +111,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:hint="Postcode / PIN" />
+            android:hint="@string/postcode_pin"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/house_number_or_building_id"
@@ -117,7 +122,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:hint="House number or Building" />
+            android:hint="@string/house_number_or_building"
+            android:inputType="textPostalAddress" />
 
         <EditText
             android:id="@+id/street_locality_id"
@@ -127,7 +133,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:hint="Street or Locality" />
+            android:hint="@string/street_or_locality"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/city_town_id"
@@ -137,7 +144,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:hint="@string/city_or_town" />
+            android:hint="@string/city_or_town"
+            android:inputType="text" />
 
         <TextView
             android:id="@+id/personal_details_email_id_textView_id"
@@ -160,13 +168,48 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:hint="@string/enter_email_id_here" />
+            android:hint="@string/enter_email_id_here"
+            android:inputType="textEmailAddress" />
 
+        <TextView
+            android:id="@+id/personal_details_set_password_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/personal_details_email_id_editText_id"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/set_password"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/personal_details_enter_password_editText_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/personal_details_set_password_id"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="@string/enter_password"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/personal_details_confirm_password_editText_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/personal_details_enter_password_editText_id"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword" />
         <Button
             android:id="@+id/personal_details_button_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/personal_details_email_id_editText_id"
+            android:layout_below="@+id/personal_details_confirm_password_editText_id"
             android:layout_margin="30dp"
             android:background="@drawable/button_border"
             android:onClick="continueToNextPage"
