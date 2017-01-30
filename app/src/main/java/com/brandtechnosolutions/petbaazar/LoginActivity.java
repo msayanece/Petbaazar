@@ -306,7 +306,7 @@ public class LoginActivity extends AppCompatActivity implements
 
     void callBuyerSellerActivity() {
         Intent intent = new Intent(this, OptionActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 

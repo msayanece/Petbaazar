@@ -3,7 +3,7 @@ package com.brandtechnosolutions.petbaazar;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.CountDownTimer;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -64,18 +64,18 @@ public class OptionActivity extends AppCompatActivity {
             finishAffinity();
             return;
         }
-
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
+// handler min sdk 21
+        new CountDownTimer(2300, 100) {
+            @Override
+            public void onTick(long l) {
+            }
 
             @Override
-            public void run() {
+            public void onFinish() {
                 doubleBackToExitPressedOnce = false;
             }
-        }, 2000);
-
-
+        }.start();
     }
 }
