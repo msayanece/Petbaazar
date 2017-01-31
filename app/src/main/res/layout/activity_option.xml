@@ -15,16 +15,51 @@
         android:contentDescription="@string/petbaazar_logo"
         app:srcCompat="@drawable/zlogoa" />
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_option" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include"
+        android:orientation="horizontal"
+        android:weightSum="1.2">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:orientation="vertical">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/post_ad_menu_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:visibility="visible"
+        app:backgroundTint="@android:color/holo_green_light"
+        app:layout_anchor="@+id/include"
+        app:rippleColor="@color/SecondaryColor"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="@string/post_ads"
+        android:textColor="@android:color/black" />
+
+        </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:orientation="vertical">
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/buy_menu_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/post_ad_menu_id"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical|center_horizontal"
         android:visibility="visible"
         app:backgroundTint="@android:color/holo_blue_light"
         app:layout_anchor="@+id/include"
@@ -32,68 +67,51 @@
         app:rippleColor="@color/SecondaryColor"
         app:srcCompat="@android:drawable/ic_menu_info_details" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView7"
-        android:layout_alignBottom="@+id/textView7"
-        android:layout_centerHorizontal="true"
-        android:text="@string/sell_product"
-        android:textColor="@android:color/black" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="@string/sell_product"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/post_ad_menu_id"
-        android:layout_alignStart="@+id/post_ad_menu_id"
-        android:layout_below="@+id/buy_menu_id"
-        android:layout_marginTop="19dp"
-        android:text="@string/post_ads"
-        android:textColor="@android:color/black" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView5"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_alignEnd="@+id/sell_menu_id"
-        android:layout_alignRight="@+id/sell_menu_id"
-        android:text="@string/find_pet"
-        android:textColor="@android:color/black" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/post_ad_menu_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="102dp"
-        android:layout_marginLeft="43dp"
-        android:layout_marginStart="43dp"
-        android:visibility="visible"
-        app:backgroundTint="@android:color/holo_green_light"
-        app:layout_anchor="@+id/include"
-        app:rippleColor="@color/SecondaryColor"
-        app:srcCompat="@android:drawable/ic_menu_add" />
-
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:orientation="vertical">
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/sell_menu_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/buy_menu_id"
-        android:layout_marginEnd="46dp"
-        android:layout_marginRight="46dp"
+        android:layout_gravity="center_vertical|center_horizontal"
         android:visibility="visible"
         app:backgroundTint="@color/PrimaryColor"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|center_horizontal"
         app:rippleColor="@color/SecondaryColor"
         app:srcCompat="@android:drawable/ic_menu_zoom" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="@string/find_pet"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_option"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true" />
 
 </RelativeLayout>
