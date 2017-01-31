@@ -9,7 +9,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_take_ad_info"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="com.brandtechnosolutions.petbaazar.TakeAdInfoActivity">
 
     <android.support.v7.widget.Toolbar
@@ -30,7 +30,7 @@
         android:layout_marginLeft="29dp"
         android:layout_marginStart="29dp"
         android:layout_marginTop="13dp"
-        android:text="Post Free Ad"
+        android:text="@string/post_free_ad"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="normal|bold" />
@@ -43,7 +43,7 @@
         android:layout_alignStart="@+id/textView9"
         android:layout_below="@+id/toolbar"
         android:layout_marginTop="25dp"
-        android:text="Select Category"
+        android:text="@string/category"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="normal|bold" />
@@ -71,9 +71,11 @@
         android:layout_alignLeft="@+id/textView8"
         android:layout_alignStart="@+id/textView8"
         android:layout_below="@+id/after_breed_spinner_relative_id"
+        android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="25dp"
-        android:hint="Enter Pet Type" />
+        android:hint="@string/enter_pet_type"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/other_breed_edit_text_id"
@@ -82,9 +84,11 @@
         android:layout_alignLeft="@+id/textView8"
         android:layout_alignStart="@+id/textView8"
         android:layout_below="@+id/other_pet_edit_text_id"
+        android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="25dp"
-        android:hint="Enter Breed" />
+        android:hint="@string/enter_breed"
+        android:inputType="text" />
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
@@ -93,7 +97,7 @@
         android:layout_alignStart="@+id/textView9"
         android:layout_below="@id/pet_spinner"
         android:layout_marginTop="25dp"
-        android:text="Select Pet Breeds"
+        android:text="@string/select_pet_breeds"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="normal|bold"
@@ -132,10 +136,11 @@
         android:layout_alignLeft="@+id/textView8"
         android:layout_alignStart="@+id/textView8"
         android:layout_below="@+id/other_breed_edit_text_id"
+        android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:hint="Ad title"
+        android:hint="@string/ad_title"
         android:inputType="textPersonName" />
 
     <EditText
@@ -145,11 +150,12 @@
         android:layout_alignLeft="@+id/editText2"
         android:layout_alignStart="@+id/editText2"
         android:layout_below="@+id/editText2"
+        android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:hint="Ad Description"
-        android:inputType="textPostalAddress" />
+        android:hint="@string/ad_description"
+        android:inputType="textImeMultiLine" />
 
     <ImageButton
         android:id="@+id/imageView7"
@@ -158,6 +164,7 @@
         android:layout_below="@+id/editText3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
+        android:contentDescription="@string/add_picture"
         android:onClick="onOk"
         app:srcCompat="@drawable/image_icon" />
 
@@ -167,7 +174,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView7"
         android:gravity="center_horizontal"
-        android:text="Add Picture"
+        android:text="@string/add_picture_text"
         android:textColor="@android:color/black"
         android:textSize="14sp" />
 
@@ -176,7 +183,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_below="@id/take_picture_text_id"
-        android:contentDescription="picture taken"
+        android:contentDescription="@string/picture_taken"
         android:onClick="onclickImage" />
 
     <TextView
@@ -184,9 +191,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/textView8"
+        android:layout_alignStart="@id/textView8"
         android:layout_below="@id/picture_taken_id"
         android:layout_marginTop="25dp"
-        android:text="Your contact information"
+        android:text="@string/your_contact_information"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -196,10 +204,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/textView8"
+        android:layout_alignStart="@id/textView8"
         android:layout_below="@id/contact_information_head_id"
+        android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="25dp"
-        android:hint="Name"
+        android:hint="@string/name"
         android:inputType="textPersonName" />
 
     <EditText
@@ -207,10 +217,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/textView8"
+        android:layout_alignStart="@id/textView8"
         android:layout_below="@id/contact_info_name_id"
+        android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="25dp"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -218,10 +230,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/textView8"
+        android:layout_alignStart="@id/textView8"
         android:layout_below="@id/contact_info_email_id"
+        android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="25dp"
-        android:hint="Address"
+        android:hint="@string/address"
         android:inputType="textPostalAddress" />
 
     <EditText
@@ -229,10 +243,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/textView8"
+        android:layout_alignStart="@id/textView8"
         android:layout_below="@id/contact_info_add_id"
+        android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="25dp"
-        android:hint="Mobile"
+        android:hint="@string/mobile"
         android:inputType="phone" />
 
     <TextView
@@ -252,7 +268,7 @@
         android:layout_below="@id/otp_verification_msg_id"
         android:gravity="center_horizontal"
         android:text="@string/otp_msg_extra"
-        android:textSize="11sp" />
+        android:textSize="12sp" />
 
     <Button
         android:layout_width="match_parent"
@@ -261,7 +277,7 @@
         android:layout_margin="25dp"
         android:background="@drawable/button_border"
         android:onClick="onclickImage"
-        android:text="Post Your Ad"
+        android:text="@string/post_your_ad"
         android:textColor="@android:color/white" />
 </RelativeLayout>
 </ScrollView>

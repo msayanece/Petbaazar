@@ -134,4 +134,20 @@
     <string name="last_name">Last name</string>
     <string name="first_name">First name</string>
     <string name="personal_information">Personal information</string>
+    <string name="enter_pet_type">Enter Pet Type</string>
+    <string name="enter_breed">Enter Breed</string>
+    <string name="select_pet_breeds">Select Pet Breeds</string>
+    <string name="ad_title">Ad title</string>
+    <string name="ad_description">Ad Description</string>
+    <string name="add_picture">add picture</string>
+    <string name="add_picture_text">Add Picture</string>
+    <string name="picture_taken">picture taken</string>
+    <string name="your_contact_information">Your contact information</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="address">Address</string>
+    <string name="mobile">Mobile</string>
+    <string name="post_your_ad">Post Your Ad</string>
+    <string name="category">Category</string>
+    <string name="post_free_ad">Post Free Ad</string>
 </resources>
