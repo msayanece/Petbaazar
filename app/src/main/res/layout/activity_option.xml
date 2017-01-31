@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="80dp"
         android:layout_marginTop="60dp"
+        android:contentDescription="@string/petbaazar_logo"
         app:srcCompat="@drawable/zlogoa" />
 
     <include
@@ -38,7 +39,7 @@
         android:layout_alignBaseline="@+id/textView7"
         android:layout_alignBottom="@+id/textView7"
         android:layout_centerHorizontal="true"
-        android:text="Sell Product"
+        android:text="@string/sell_product"
         android:textColor="@android:color/black" />
 
     <TextView
@@ -49,7 +50,7 @@
         android:layout_alignStart="@+id/post_ad_menu_id"
         android:layout_below="@+id/buy_menu_id"
         android:layout_marginTop="19dp"
-        android:text="Post Ads"
+        android:text="@string/post_ads"
         android:textColor="@android:color/black" />
 
     <TextView
@@ -60,7 +61,7 @@
         android:layout_alignBottom="@+id/textView5"
         android:layout_alignEnd="@+id/sell_menu_id"
         android:layout_alignRight="@+id/sell_menu_id"
-        android:text="Find Pet"
+        android:text="@string/find_pet"
         android:textColor="@android:color/black" />
 
     <android.support.design.widget.FloatingActionButton

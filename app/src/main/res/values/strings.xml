@@ -150,4 +150,7 @@
     <string name="post_your_ad">Post Your Ad</string>
     <string name="category">Category</string>
     <string name="post_free_ad">Post Free Ad</string>
+    <string name="petbaazar_logo">Petbaazar logo</string>
+    <string name="sell_product">Sell Product</string>
+    <string name="post_ads">Post Ads</string>
 </resources>
